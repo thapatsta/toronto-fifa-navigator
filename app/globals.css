@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-white text-gray-900 font-sans;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-4;
+  }
+  .btn-primary {
+    @apply font-semibold px-6 py-3 rounded-xl transition-colors;
+    background-color: #1a237e;
+    color: white;
+  }
+  .btn-primary:hover {
+    background-color: #283593;
+  }
+  .btn-accent {
+    @apply font-semibold px-6 py-3 rounded-xl transition-colors;
+    background-color: #d32f2f;
+    color: white;
+  }
+  .btn-accent:hover {
+    background-color: #ef5350;
+  }
+  .tag-closure {
+    @apply bg-red-100 text-red-800 text-xs font-semibold px-2 py-1 rounded-full;
+  }
+  .tag-restriction {
+    @apply bg-orange-100 text-orange-800 text-xs font-semibold px-2 py-1 rounded-full;
+  }
+  .tag-transit {
+    @apply bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full;
+  }
+  .tag-cycling {
+    @apply bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full;
+  }
+}
