@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Match } from "@/data/matches";
 import { formatDate } from "@/lib/utils";
-import { ChevronDown, ChevronUp, MapPin, Clock, Trophy } from "lucide-react";
+import { ChevronDown, ChevronUp, MapPin, Clock } from "lucide-react";
 import TransitOption from "./TransitOption";
 
 interface MatchCardProps {
@@ -30,12 +30,16 @@ export default function MatchCard({ match, showDetails = false }: MatchCardProps
               <span className="text-xs text-gray-500">{match.group}</span>
             )}
           </div>
-          <div className="flex items-center gap-3 text-lg font-bold text-gray-900">
-            <span>{match.homeFlag}</span>
-            <span className="text-base">{match.homeTeam}</span>
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="flex items-center gap-1.5 font-bold text-gray-900">
+              <span>{match.homeFlag}</span>
+              <span className="text-base">{match.homeTeam}</span>
+            </span>
             <span className="text-gray-400 text-sm font-normal">vs</span>
-            <span className="text-base">{match.awayTeam}</span>
-            <span>{match.awayFlag}</span>
+            <span className="flex items-center gap-1.5 font-bold text-gray-900">
+              <span>{match.awayFlag}</span>
+              <span className="text-base leading-snug">{match.awayTeam}</span>
+            </span>
           </div>
         </div>
       </div>

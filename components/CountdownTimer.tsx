@@ -7,8 +7,10 @@ import { matches } from "@/data/matches";
 export default function CountdownTimer() {
   const [countdown, setCountdown] = useState<ReturnType<typeof getCountdownToNextMatch>>(null);
   const [nextMatch, setNextMatch] = useState<(typeof matches)[0] | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const nm = matches.find((m) => {
       const matchDate = new Date(m.date + "T12:00:00");
       return matchDate >= new Date(new Date().toDateString());
@@ -20,6 +22,25 @@ export default function CountdownTimer() {
     const interval = setInterval(tick, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  if (!mounted) {
+    return (
+      <div className="text-center">
+        <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+          Next Toronto Match
+        </p>
+        <div className="flex justify-center gap-3 mb-3">
+          {["Days", "Hrs", "Min", "Sec"].map((label) => (
+            <div key={label} className="flex flex-col items-center bg-primary text-white rounded-xl px-4 py-3 min-w-[64px]">
+              <span className="text-2xl font-bold tabular-nums">--</span>
+              <span className="text-xs text-white/70 font-medium">{label}</span>
+            </div>
+          ))}
+        </div>
+        <p className="text-sm font-medium text-gray-400">Loading...</p>
+      </div>
+    );
+  }
 
   if (!countdown || !nextMatch) {
     return (
