@@ -44,12 +44,12 @@ export default function MatchCard({
           <div className="flex items-center gap-2 flex-wrap">
             <span className="flex items-center gap-1.5 font-bold text-gray-900">
               <span>{match.homeFlag}</span>
-              <span className="text-base">{match.homeTeam}</span>
+              <span className="text-base">{match.homeShort ?? match.homeTeam}</span>
             </span>
             <span className="text-gray-400 text-sm font-normal">vs</span>
             <span className="flex items-center gap-1.5 font-bold text-gray-900">
               <span>{match.awayFlag}</span>
-              <span className="text-base leading-snug">{match.awayTeam}</span>
+              <span className="text-base leading-snug">{match.awayShort ?? match.awayTeam}</span>
             </span>
           </div>
         </div>

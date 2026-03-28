@@ -93,7 +93,7 @@ export default function CountdownTimer() {
         ))}
       </div>
       <p className="mt-4 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
-        {nextMatch.homeFlag} {nextMatch.homeTeam} <span style={{ color: "var(--red)" }}>vs</span> {nextMatch.awayTeam} {nextMatch.awayFlag}
+        {nextMatch.homeFlag} {nextMatch.homeShort ?? nextMatch.homeTeam} <span style={{ color: "var(--red)" }}>vs</span> {nextMatch.awayShort ?? nextMatch.awayTeam} {nextMatch.awayFlag}
       </p>
     </div>
   );

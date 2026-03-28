@@ -136,16 +136,16 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem", textAlign: "center" }}>
                   <span style={{ fontSize: "2.4rem", lineHeight: 1 }}>{match.homeFlag}</span>
                   <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: "var(--navy)", lineHeight: 1.2 }}>
-                    {match.homeTeam}
+                    {match.homeShort ?? match.homeTeam}
                   </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px", padding: "0 0.5rem" }}>
-                  <span className="display" style={{ fontSize: "1.4rem", color: "var(--cream-2, #ede7d9)", letterSpacing: "0.05em" }}>VS</span>
+                  <span className="display" style={{ fontSize: "1.4rem", color: "var(--border)", letterSpacing: "0.05em" }}>VS</span>
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem", textAlign: "center" }}>
                   <span style={{ fontSize: "2.4rem", lineHeight: 1 }}>{match.awayFlag}</span>
                   <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.85rem", color: "var(--navy)", lineHeight: 1.2 }}>
-                    {match.awayTeam}
+                    {match.awayShort ?? match.awayTeam}
                   </span>
                 </div>
               </div>
@@ -189,7 +189,13 @@ export default function MatchCardWithPrefs({ matches }: Props) {
               </div>
 
               {match.notes && (
-                <p style={{ marginTop: "0.5rem", fontSize: "0.7rem", color: "#92400e", background: "#fef3c7", borderRadius: "8px", padding: "0.35rem 0.6rem", lineHeight: 1.4 }}>
+                <p style={{
+                  marginTop: "0.5rem", fontSize: "0.7rem", color: "#92400e",
+                  background: "#fef3c7", borderRadius: "8px", padding: "0.35rem 0.6rem",
+                  lineHeight: 1.4,
+                  display: "-webkit-box", WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical", overflow: "hidden",
+                }}>
                   📌 {match.notes}
                 </p>
               )}

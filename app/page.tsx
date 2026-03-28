@@ -32,7 +32,7 @@ export default function HomePage() {
       </div>
 
       {/* ── MATCH SCHEDULE ── */}
-      <section className="px-4 pb-7 max-w-2xl mx-auto">
+      <section className="px-4 pt-6 pb-7 max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-5">
           <h2 className="display" style={{ fontSize: "1.9rem", color: "var(--navy)", lineHeight: 1 }}>
             Match Schedule
@@ -48,7 +48,7 @@ export default function HomePage() {
       </section>
 
       {/* ── QUICK LINKS ── */}
-      <section className="px-4 pb-7 max-w-2xl mx-auto">
+      <section className="px-4 pt-6 pb-7 max-w-2xl mx-auto">
         <h2 className="display mb-4" style={{ fontSize: "1.9rem", color: "var(--navy)", lineHeight: 1 }}>
           More Info
         </h2>
@@ -80,7 +80,7 @@ export default function HomePage() {
       </section>
 
       {/* ── QUICK FACTS ── */}
-      <section className="px-4 pb-10 max-w-2xl mx-auto">
+      <section className="px-4 pt-6 pb-10 max-w-2xl mx-auto">
         <div style={{ background: "var(--navy)", borderRadius: "20px", padding: "1.25rem 1.25rem 1.5rem" }}>
           <h2 className="display mb-4" style={{ fontSize: "1.6rem", color: "white", lineHeight: 1 }}>
             The Quick Facts

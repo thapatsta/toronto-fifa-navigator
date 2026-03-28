@@ -4,6 +4,8 @@ export interface Match {
   time: string;
   homeTeam: string;
   awayTeam: string;
+  homeShort?: string;  // Short display name for cards (falls back to homeTeam)
+  awayShort?: string;  // Short display name for cards (falls back to awayTeam)
   homeFlag: string;
   awayFlag: string;
   stage: string;
@@ -18,6 +20,7 @@ export const matches: Match[] = [
     time: "3:00 PM ET",
     homeTeam: "Canada",
     awayTeam: "European Playoff A Winner (Bosnia & Herzegovina vs Italy — TBD Mar 31)",
+    awayShort: "Euro PO A Winner",
     homeFlag: "🇨🇦",
     awayFlag: "🏴",
     stage: "Group Stage",
@@ -63,6 +66,7 @@ export const matches: Match[] = [
     time: "3:00 PM ET",
     homeTeam: "Senegal",
     awayTeam: "FIFA Playoff 2 Winner (Bolivia vs Iraq — TBD Mar 31)",
+    awayShort: "FIFA PO 2 Winner",
     homeFlag: "🇸🇳",
     awayFlag: "🏴",
     stage: "Group Stage",
@@ -75,6 +79,8 @@ export const matches: Match[] = [
     time: "7:00 PM ET",
     homeTeam: "Group K Runner-up",
     awayTeam: "Group L Runner-up",
+    homeShort: "Grp K Runner-up",
+    awayShort: "Grp L Runner-up",
     homeFlag: "⚽",
     awayFlag: "⚽",
     stage: "Round of 32",

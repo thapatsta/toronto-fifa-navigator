@@ -60,7 +60,7 @@ function MatchDayHero({ match }: { match: NonNullable<TournamentStatus["todayMat
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "3.5rem", lineHeight: 1 }}>{match.homeFlag}</div>
             <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "white", marginTop: "0.25rem" }}>
-              {match.homeTeam.split(" ")[0]}
+              {match.homeShort ?? match.homeTeam}
             </p>
           </div>
           <h1 className="display" style={{ fontSize: "clamp(2.5rem, 12vw, 4.5rem)", color: "white", lineHeight: 0.9, flex: 1, textAlign: "center" }}>
@@ -69,7 +69,7 @@ function MatchDayHero({ match }: { match: NonNullable<TournamentStatus["todayMat
           <div style={{ textAlign: "center" }}>
             <div style={{ fontSize: "3.5rem", lineHeight: 1 }}>{match.awayFlag}</div>
             <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "white", marginTop: "0.25rem" }}>
-              {match.awayTeam.split(" ")[0]}
+              {match.awayShort ?? match.awayTeam}
             </p>
           </div>
         </div>
@@ -287,10 +287,34 @@ function PostTournamentHero() {
    LOADING SKELETON
 ───────────────────────────────────────── */
 function HeroSkeleton() {
+  // Mirrors PreTournamentHero structure to prevent layout shift on hydration.
+  // Shimmer divs approximate: label, h1 (2 lines), subtext, countdown block.
   return (
     <section
-      style={{ background: "var(--navy)", minHeight: "220px" }}
+      style={{ background: "var(--navy)", position: "relative", overflow: "hidden" }}
       className="px-4 pt-8 pb-10"
-    />
+    >
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "3px", background: "var(--red)" }} />
+      <div className="max-w-2xl mx-auto" style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+        {/* Label shimmer */}
+        <div style={{ height: "12px", width: "180px", borderRadius: "6px", background: "rgba(255,255,255,0.08)" }} />
+        {/* H1 shimmer — 2 lines */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+          <div style={{ height: "clamp(3rem, 15vw, 5.5rem)", width: "75%", borderRadius: "8px", background: "rgba(255,255,255,0.1)" }} />
+          <div style={{ height: "clamp(3rem, 15vw, 5.5rem)", width: "55%", borderRadius: "8px", background: "rgba(255,255,255,0.07)" }} />
+        </div>
+        {/* Subtext shimmer */}
+        <div style={{ height: "14px", width: "220px", borderRadius: "6px", background: "rgba(255,255,255,0.06)", marginBottom: "0.5rem" }} />
+        {/* Countdown shimmer — 4 blocks */}
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "6px" }}>
+              <div style={{ width: "clamp(2.8rem, 10vw, 4.5rem)", height: "clamp(2.8rem, 10vw, 4.5rem)", borderRadius: "8px", background: "rgba(255,255,255,0.1)" }} />
+              <div style={{ height: "8px", width: "36px", borderRadius: "4px", background: "rgba(255,255,255,0.06)" }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -47,6 +47,9 @@ export default function MyTournament() {
               fontFamily: "'Barlow Condensed', sans-serif",
               fontWeight: 700, letterSpacing: "0.05em",
               transition: "all 0.15s",
+              maxWidth: "160px", overflow: "hidden",
+              whiteSpace: "nowrap", textOverflow: "ellipsis",
+              flexShrink: 0,
             }}
           >
             {prefs.followedTeam
@@ -172,7 +175,7 @@ function MatchRow({
             {label.toUpperCase()}
           </p>
           <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.9rem", color: "var(--navy)", lineHeight: 1.2 }}>
-            {match.homeFlag} {match.homeTeam} vs {match.awayTeam} {match.awayFlag}
+            {match.homeFlag} {match.homeShort ?? match.homeTeam} vs {match.awayShort ?? match.awayTeam} {match.awayFlag}
           </p>
           <p style={{ fontSize: "0.7rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", marginTop: "2px" }}>
             {match.time}

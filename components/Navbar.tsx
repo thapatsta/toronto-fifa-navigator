@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { Home, MapPin, Calendar, BookOpen, Utensils, Newspaper } from "lucide-react";
 
 const navItems = [
-  { href: "/",          label: "Home",        icon: Home },
-  { href: "/closures",  label: "Closures",    icon: MapPin },
-  { href: "/matches",   label: "Matches",     icon: Calendar },
-  { href: "/guide",     label: "Guide",       icon: BookOpen },
-  { href: "/eat-watch", label: "Eat & Watch", icon: Utensils },
-  { href: "/blog",      label: "Articles",    icon: Newspaper },
+  { href: "/",          label: "Home",        mobileLabel: "Home",     icon: Home },
+  { href: "/closures",  label: "Closures",    mobileLabel: "Closures", icon: MapPin },
+  { href: "/matches",   label: "Matches",     mobileLabel: "Matches",  icon: Calendar },
+  { href: "/guide",     label: "Guide",       mobileLabel: "Guide",    icon: BookOpen },
+  { href: "/eat-watch", label: "Eat & Watch", mobileLabel: "Venues",   icon: Utensils },
+  { href: "/blog",      label: "Articles",    mobileLabel: "Articles", icon: Newspaper },
 ];
 
 export default function Navbar() {
@@ -75,7 +75,7 @@ export default function Navbar() {
       {/* ── Mobile bottom nav ── */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t" style={{ background: "var(--card)", borderColor: "var(--border)" }}>
         <div className="flex justify-around items-center h-16 px-1">
-          {navItems.map(({ href, label, icon: Icon }) => {
+          {navItems.map(({ href, mobileLabel, icon: Icon }) => {
             const active = pathname === href;
             return (
               <Link key={href} href={href} className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all">
@@ -87,8 +87,9 @@ export default function Navbar() {
                   letterSpacing: "0.06em",
                   textTransform: "uppercase",
                   color: active ? "var(--red)" : "var(--muted)",
+                  whiteSpace: "nowrap",
                 }}>
-                  {label}
+                  {mobileLabel}
                 </span>
               </Link>
             );
