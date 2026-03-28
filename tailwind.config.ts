@@ -9,22 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#1a237e",
-          light: "#283593",
-          dark: "#0d1642",
-        },
-        accent: {
-          DEFAULT: "#d32f2f",
-          light: "#ef5350",
-          dark: "#b71c1c",
-        },
-        transit: "#2e7d32",
-        warning: "#ef6c00",
-        closure: "#c62828",
+        navy:    { DEFAULT: "#0d1b2a", 2: "#162436" },
+        primary: { DEFAULT: "#0d1b2a", light: "#162436" },
+        accent:  { DEFAULT: "#cc2936", light: "#e53545", dark: "#a81f2b" },
+        gold:    { DEFAULT: "#e8a020", light: "#f0b84a" },
+        cream:   { DEFAULT: "#f5f0e8", 2: "#ede7d9" },
+        transit: "#166534",
+        warning: "#9a3412",
+        closure: "#991b1b",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["'Bebas Neue'", "system-ui", "sans-serif"],
+        condensed: ["'Barlow Condensed'", "system-ui", "sans-serif"],
+        sans: ["'DM Sans'", "system-ui", "sans-serif"],
       },
     },
   },

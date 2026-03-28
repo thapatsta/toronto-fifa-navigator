@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { matches } from "@/data/matches";
-import MatchCard from "@/components/MatchCard";
 import { MapPin, Calendar } from "lucide-react";
+import MatchesWithPrefs from "@/components/MatchesWithPrefs";
 
 export const metadata: Metadata = {
   title: "Match Day Guide — All 6 Toronto Matches",
@@ -42,7 +42,7 @@ export default function MatchesPage() {
         </p>
       </div>
 
-      {/* Match cards */}
+      {/* Match cards with save capability */}
       <div>
         <div className="flex items-center gap-2 mb-4">
           <Calendar size={16} className="text-gray-500" />
@@ -50,11 +50,7 @@ export default function MatchesPage() {
             {matches.length} Matches · June 12 – July 2, 2026
           </h2>
         </div>
-        <div className="space-y-3">
-          {matches.map((match) => (
-            <MatchCard key={match.id} match={match} showDetails={false} />
-          ))}
-        </div>
+        <MatchesWithPrefs matches={matches} />
       </div>
 
       {/* After game tips */}

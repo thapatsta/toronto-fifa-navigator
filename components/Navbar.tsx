@@ -2,14 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, MapPin, Calendar, BookOpen, Utensils } from "lucide-react";
+import { Home, MapPin, Calendar, BookOpen, Utensils, Newspaper } from "lucide-react";
 
 const navItems = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/closures", label: "Closures", icon: MapPin },
-  { href: "/matches", label: "Matches", icon: Calendar },
-  { href: "/guide", label: "Guide", icon: BookOpen },
+  { href: "/",          label: "Home",        icon: Home },
+  { href: "/closures",  label: "Closures",    icon: MapPin },
+  { href: "/matches",   label: "Matches",     icon: Calendar },
+  { href: "/guide",     label: "Guide",       icon: BookOpen },
   { href: "/eat-watch", label: "Eat & Watch", icon: Utensils },
+  { href: "/blog",      label: "Articles",    icon: Newspaper },
 ];
 
 export default function Navbar() {
@@ -17,43 +18,76 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Desktop top nav */}
-      <nav className="hidden md:flex sticky top-0 z-50 bg-primary text-white shadow-lg">
-        <div className="max-w-6xl mx-auto px-4 w-full flex items-center justify-between h-16">
-          <Link href="/" className="font-bold text-lg tracking-tight">
-            🏆 Toronto FIFA Navigator
+      {/* ── Desktop top nav ── */}
+      <nav className="hidden md:flex sticky top-0 z-50 shadow-lg" style={{ background: "var(--navy)" }}>
+        <div className="max-w-3xl mx-auto px-6 w-full flex items-center justify-between h-14">
+          <Link
+            href="/"
+            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "0.1em", color: "white", textTransform: "uppercase" }}
+          >
+            <span style={{ color: "var(--gold)" }}>⚽ </span>
+            Toronto <span style={{ color: "var(--red)" }}>FIFA</span> 2026
           </Link>
-          <div className="flex gap-6">
-            {navItems.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`text-sm font-medium hover:text-red-300 transition-colors ${
-                  pathname === href ? "text-red-300 border-b-2 border-red-300 pb-1" : "text-white/90"
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
+          <div className="flex gap-1">
+            {navItems.map(({ href, label }) => {
+              const active = pathname === href;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className="relative px-3 py-1 transition-colors"
+                  style={{
+                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontWeight: 600,
+                    fontSize: "0.75rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
+                    color: active ? "white" : "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  {label}
+                  {active && (
+                    <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full" style={{ background: "var(--red)" }} />
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </nav>
 
-      {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-2xl">
-        <div className="flex justify-around items-center h-16 px-2">
+      {/* ── Mobile top header ── */}
+      <header className="md:hidden sticky top-0 z-40 px-4 py-3" style={{ background: "var(--navy)" }}>
+        <div className="flex items-center justify-between">
+          <Link
+            href="/"
+            style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em", color: "white", textTransform: "uppercase" }}
+          >
+            <span style={{ color: "var(--gold)" }}>⚽ </span>
+            Toronto <span style={{ color: "var(--red)" }}>FIFA</span> 2026
+          </Link>
+          <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+            World Cup
+          </span>
+        </div>
+      </header>
+
+      {/* ── Mobile bottom nav ── */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t" style={{ background: "var(--card)", borderColor: "var(--border)" }}>
+        <div className="flex justify-around items-center h-16 px-1">
           {navItems.map(({ href, label, icon: Icon }) => {
             const active = pathname === href;
             return (
-              <Link
-                key={href}
-                href={href}
-                className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-colors ${
-                  active ? "text-primary" : "text-gray-500"
-                }`}
-              >
-                <Icon size={20} strokeWidth={active ? 2.5 : 1.8} />
-                <span className={`text-[10px] font-medium ${active ? "text-primary" : "text-gray-500"}`}>
+              <Link key={href} href={href} className="flex flex-col items-center gap-0.5 px-2 py-1 rounded-xl transition-all">
+                <Icon size={19} strokeWidth={active ? 2.5 : 1.7} style={{ color: active ? "var(--red)" : "var(--muted)" }} />
+                <span style={{
+                  fontFamily: "'Barlow Condensed', sans-serif",
+                  fontWeight: 600,
+                  fontSize: "0.6rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  color: active ? "var(--red)" : "var(--muted)",
+                }}>
                   {label}
                 </span>
               </Link>
@@ -61,16 +95,6 @@ export default function Navbar() {
           })}
         </div>
       </nav>
-
-      {/* Mobile top header */}
-      <header className="md:hidden sticky top-0 z-40 bg-primary text-white px-4 py-3 shadow-md">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="font-bold text-base tracking-tight">
-            🏆 Toronto FIFA Navigator
-          </Link>
-          <span className="text-xs text-white/70 font-medium">2026 World Cup</span>
-        </div>
-      </header>
     </>
   );
 }

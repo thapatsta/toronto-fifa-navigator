@@ -5,7 +5,10 @@ import { restaurants } from "@/data/restaurants";
 import { watchParties } from "@/data/watchParties";
 import RestaurantCard from "@/components/RestaurantCard";
 import NeighbourhoodFilter from "@/components/NeighbourhoodFilter";
-import { Monitor, UtensilsCrossed } from "lucide-react";
+import { Monitor, UtensilsCrossed, Star } from "lucide-react";
+import { useTournamentPrefs } from "@/hooks/useTournamentPrefs";
+import { getMatchesForTeam } from "@/lib/tournament";
+import { matches } from "@/data/matches";
 
 const countryGroups = [
   { country: "Canada", flag: "🇨🇦" },
@@ -17,10 +20,25 @@ const countryGroups = [
   { country: "Senegal", flag: "🇸🇳" },
 ];
 
+/** Countries playing in Toronto today or in the next upcoming Toronto match */
+function getRelevantCountriesForToday(): string[] {
+  const todayStr = new Date().toISOString().split("T")[0];
+  const todayMatch = matches.find((m) => m.date === todayStr);
+  if (todayMatch) return [todayMatch.homeTeam, todayMatch.awayTeam];
+  const next = matches.find((m) => m.date > todayStr);
+  if (next) return [next.homeTeam, next.awayTeam];
+  return [];
+}
+
 export default function EatWatchPage() {
   const [activeTab, setActiveTab] = useState<"eat" | "watch">("eat");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedNeighbourhood, setSelectedNeighbourhood] = useState("");
+  const { prefs, loaded } = useTournamentPrefs();
+
+  const relevantCountries = getRelevantCountriesForToday();
+  const followedTeam = loaded ? prefs.followedTeam : null;
+  const followedFlag = loaded ? prefs.followedFlag : null;
 
   const allNeighbourhoods = [...new Set(watchParties.map((w) => w.neighbourhood))].filter(
     (n) => n !== "Multiple Locations"
@@ -69,6 +87,58 @@ export default function EatWatchPage() {
 
       {activeTab === "eat" && (
         <div className="space-y-6">
+          {/* Personalised prompt — followed team */}
+          {followedTeam && !selectedCountry && (
+            <button
+              onClick={() => setSelectedCountry(followedTeam)}
+              style={{
+                width: "100%", display: "flex", alignItems: "center", gap: "0.6rem",
+                padding: "0.75rem 1rem", borderRadius: "14px",
+                background: "var(--navy)", color: "white",
+                border: "none", cursor: "pointer", textAlign: "left",
+              }}
+            >
+              <Star size={15} style={{ color: "var(--gold)", flexShrink: 0 }} />
+              <div>
+                <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.9rem", letterSpacing: "0.05em" }}>
+                  {followedFlag} Eat like {followedTeam}
+                </p>
+                <p style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.55)", fontFamily: "'DM Sans', sans-serif" }}>
+                  Restaurants matched to your team · tap to filter
+                </p>
+              </div>
+            </button>
+          )}
+
+          {/* Today's match nudge */}
+          {!followedTeam && relevantCountries.length > 0 && !selectedCountry && (
+            <div style={{ background: "var(--cream-2)", borderRadius: "14px", padding: "0.75rem 1rem" }}>
+              <p style={{ fontSize: "0.72rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", marginBottom: "0.5rem" }}>
+                🍽️ Restaurants matching today&apos;s Toronto match
+              </p>
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                {relevantCountries.map((c) => {
+                  const group = countryGroups.find((g) => c.startsWith(g.country) || g.country.startsWith(c.split(" ")[0]));
+                  if (!group) return null;
+                  return (
+                    <button
+                      key={c}
+                      onClick={() => setSelectedCountry(group.country)}
+                      style={{
+                        padding: "4px 12px", borderRadius: "99px",
+                        background: "var(--navy)", color: "white",
+                        border: "none", cursor: "pointer",
+                        fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.8rem",
+                      }}
+                    >
+                      {group.flag} {group.country}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Country filter pills */}
           <div className="flex flex-wrap gap-2">
             <button
