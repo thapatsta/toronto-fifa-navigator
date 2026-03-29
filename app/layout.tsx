@@ -6,24 +6,24 @@ import StatusBanner from "@/components/StatusBanner";
 
 export const metadata: Metadata = {
   title: {
-    default: "Toronto FIFA Navigator — Your World Cup 2026 Guide",
-    template: "%s | Toronto FIFA Navigator",
+    default: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
+    template: "%s | Toronto Football Guide",
   },
   description:
-    "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto. Find out what's affected and how to get around.",
-  metadataBase: new URL("https://torontofifa.guide"),
+    "Match schedules, match-day transit, road closures, bars, and visitor essentials for FIFA World Cup 2026 in Toronto.",
+  metadataBase: new URL("https://torontofootball.guide"),
   openGraph: {
-    title: "Toronto FIFA Navigator",
-    description: "Everything you need to navigate FIFA World Cup 2026 in Toronto.",
-    url: "https://torontofifa.guide",
-    siteName: "Toronto FIFA Navigator",
+    title: "Toronto Football Guide",
+    description: "Everything you need for FIFA World Cup 2026 in Toronto — matches, match day, bars, transit, and city essentials.",
+    url: "https://torontofootball.guide",
+    siteName: "Toronto Football Guide",
     locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Toronto FIFA Navigator",
-    description: "Navigate FIFA World Cup 2026 in Toronto — closures, transit, matches, and more.",
+    title: "Toronto Football Guide",
+    description: "FIFA World Cup 2026 in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.",
   },
 };
 

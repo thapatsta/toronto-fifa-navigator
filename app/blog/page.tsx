@@ -3,17 +3,17 @@ import Link from "next/link";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Toronto FIFA World Cup 2026 — Articles & Guides",
+  title: "Updates & Guides — Toronto Football Guide",
   description:
     "In-depth guides for getting around Toronto during the FIFA World Cup 2026 — road closures, transit, neighbourhood impacts, and more.",
   openGraph: {
-    title: "Toronto FIFA 2026 — Articles & Guides",
+    title: "Updates & Guides — Toronto Football Guide",
     description: "In-depth guides for getting around Toronto during the FIFA World Cup 2026.",
-    url: "https://torontofifa.guide/blog",
+    url: "https://torontofootball.guide/blog",
     type: "website",
   },
   alternates: {
-    canonical: "https://torontofifa.guide/blog",
+    canonical: "https://torontofootball.guide/blog",
   },
 };
 
@@ -68,10 +68,10 @@ export default function BlogIndexPage() {
 
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <p className="label" style={{ color: "var(--gold)", fontSize: "0.62rem", marginBottom: "0.5rem" }}>
-            TORONTO FIFA NAVIGATOR
+            TORONTO FOOTBALL GUIDE
           </p>
           <h1 className="display" style={{ fontSize: "clamp(2rem, 8vw, 3.5rem)", color: "white", lineHeight: 0.95, marginBottom: "0.75rem" }}>
-            ARTICLES<br />& GUIDES
+            UPDATES<br />& GUIDES
           </h1>
           <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9rem", fontFamily: "'DM Sans', sans-serif" }}>
             Everything you need to navigate FIFA World Cup 2026 in Toronto.

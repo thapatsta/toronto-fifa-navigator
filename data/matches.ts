@@ -11,6 +11,8 @@ export interface Match {
   stage: string;
   group?: string;
   notes?: string;
+  significance?: string;  // Short label shown on card: "Canada opener", "Knockout match", etc.
+  utilityNote?: string;   // Practical note for match card: "Best for after-work fans", etc.
 }
 
 export const matches: Match[] = [
@@ -25,6 +27,8 @@ export const matches: Match[] = [
     awayFlag: "🏴",
     stage: "Group Stage",
     group: "Group F",
+    significance: "Canada opener",
+    utilityNote: "Canada's first-ever home World Cup match. Expect the largest crowds of the tournament.",
     notes: "Canada's first-ever home FIFA World Cup match. European Playoff A final is Bosnia & Herzegovina vs Italy on March 31, 2026.",
   },
   {
@@ -37,6 +41,8 @@ export const matches: Match[] = [
     awayFlag: "🇵🇦",
     stage: "Group Stage",
     group: "Group L",
+    significance: "Evening kickoff",
+    utilityNote: "Best for after-work fans — evening start means more time to get there.",
   },
   {
     id: "match-3",
@@ -48,6 +54,8 @@ export const matches: Match[] = [
     awayFlag: "🇨🇮",
     stage: "Group Stage",
     group: "Group C",
+    significance: "Weekend match",
+    utilityNote: "Weekend afternoon kickoff — great for families and casual fans.",
   },
   {
     id: "match-4",
@@ -59,6 +67,8 @@ export const matches: Match[] = [
     awayFlag: "🇵🇦",
     stage: "Group Stage",
     group: "Group L",
+    significance: "Evening kickoff",
+    utilityNote: "Evening match — transit demand heaviest in the hour before kickoff.",
   },
   {
     id: "match-5",
@@ -71,6 +81,8 @@ export const matches: Match[] = [
     awayFlag: "🏴",
     stage: "Group Stage",
     group: "Group I",
+    significance: "Afternoon kickoff",
+    utilityNote: "Afternoon start — allow extra travel time on a busy mid-tournament Friday.",
     notes: "FIFA Intercontinental Playoff 2 final is Bolivia vs Iraq on March 31, 2026.",
   },
   {
@@ -84,6 +96,8 @@ export const matches: Match[] = [
     homeFlag: "⚽",
     awayFlag: "⚽",
     stage: "Round of 32",
+    significance: "Knockout match",
+    utilityNote: "Knockout stage — one result ends a team's tournament. Expect elevated demand.",
     notes: "Group K: Portugal, Uzbekistan, Colombia + playoff winner. Group L: England, Croatia, Ghana, Panama.",
   },
 ];

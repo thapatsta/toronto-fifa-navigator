@@ -6,9 +6,9 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="text-white font-semibold mb-3">Toronto FIFA Navigator</h3>
+            <h3 className="text-white font-semibold mb-3">Toronto Football Guide</h3>
             <p className="text-sm leading-relaxed">
-              Built by a Toronto local to help residents and visitors navigate FIFA World Cup 2026.
+              Built by a Toronto local to help residents and visitors experience FIFA World Cup 2026.
               Not affiliated with FIFA, Toronto FC, or the City of Toronto.
             </p>
           </div>
@@ -36,8 +36,8 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-3">Pages</h3>
             <ul className="text-sm space-y-2">
               {[
-                ["/closures", "Road Closures & Transit"],
-                ["/matches", "Match Day Guide"],
+                ["/match-day", "Match Day"],
+                ["/matches", "Matches"],
                 ["/fan-festival", "Fan Festival"],
                 ["/guide", "Visitor Guide"],
                 ["/eat-watch", "Eat & Watch"],
@@ -57,7 +57,7 @@ export default function Footer() {
             Details may change — check{" "}
             <a href="https://toronto.ca/fifa" className="underline hover:text-gray-300">toronto.ca/fifa</a> for official updates.
           </p>
-          <p>© 2026 Toronto FIFA Navigator. All rights reserved. Contact: hello@torontofifa.guide</p>
+          <p>© 2026 Toronto Football Guide. All rights reserved. Contact: hello@torontofootball.guide</p>
         </div>
       </div>
     </footer>

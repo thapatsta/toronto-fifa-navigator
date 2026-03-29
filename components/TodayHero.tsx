@@ -233,18 +233,48 @@ function PreTournamentHero() {
         </p>
         <h1
           className="display animate-fade-up"
-          style={{ fontSize: "clamp(3rem, 15vw, 5.5rem)", color: "white", lineHeight: 0.9, marginBottom: "0.25rem" }}
+          style={{ fontSize: "clamp(3rem, 15vw, 5.5rem)", color: "white", lineHeight: 0.9, marginBottom: "0.75rem" }}
         >
           6 MATCHES.<br />
           <span style={{ color: "var(--red)" }}>ONE CITY.</span>
         </h1>
         <p
           className="animate-fade-up stagger-1"
-          style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.85rem", marginBottom: "2rem", fontFamily: "'DM Sans', sans-serif" }}
+          style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.88rem", marginBottom: "1.5rem", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5, maxWidth: "480px" }}
         >
-          Exhibition Place · June 12 – July 2, 2026
+          Your guide to the FIFA World Cup in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.
         </p>
-        <div className="animate-fade-up stagger-2">
+        {/* Primary CTAs */}
+        <div className="animate-fade-up stagger-2" style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", marginBottom: "1.75rem" }}>
+          <Link
+            href="/matches"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.4rem",
+              padding: "0.65rem 1.2rem", borderRadius: "12px",
+              background: "var(--red)", color: "white",
+              fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+              fontSize: "0.9rem", letterSpacing: "0.06em", textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
+            View Toronto Matches
+          </Link>
+          <Link
+            href="/guide"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.4rem",
+              padding: "0.65rem 1.2rem", borderRadius: "12px",
+              background: "rgba(255,255,255,0.12)", color: "white",
+              border: "1px solid rgba(255,255,255,0.2)",
+              fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+              fontSize: "0.9rem", letterSpacing: "0.06em", textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
+            Explore the Guide
+          </Link>
+        </div>
+        <div className="animate-fade-up stagger-3">
           <CountdownTimer />
         </div>
       </div>

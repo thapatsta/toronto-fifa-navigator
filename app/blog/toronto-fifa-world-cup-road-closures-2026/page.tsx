@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     title: "Toronto FIFA World Cup 2026: Complete Road Closure Guide by Date",
     description:
       "Which streets close, when, and what you can do instead. Covers all 6 match days plus the full June 11–July 19 tournament window.",
-    url: "https://torontofifa.guide/blog/toronto-fifa-world-cup-road-closures-2026",
+    url: "https://torontofootball.guide/blog/toronto-fifa-world-cup-road-closures-2026",
     type: "article",
     publishedTime: "2026-03-27T12:00:00Z",
-    authors: ["Toronto FIFA Navigator"],
+    authors: ["Toronto Football Guide"],
     tags: ["FIFA World Cup 2026", "Toronto road closures", "Exhibition Place", "Liberty Village"],
   },
   twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "Which streets close for the World Cup, when, and what to do instead.",
   },
   alternates: {
-    canonical: "https://torontofifa.guide/blog/toronto-fifa-world-cup-road-closures-2026",
+    canonical: "https://torontofootball.guide/blog/toronto-fifa-world-cup-road-closures-2026",
   },
 };
 
@@ -35,9 +35,9 @@ const jsonLd = {
     "The City of Toronto's full road closure plan for FIFA World Cup 2026 — which streets close, when, and what to do instead.",
   datePublished: "2026-03-27T12:00:00Z",
   dateModified: "2026-03-27T12:00:00Z",
-  author: { "@type": "Organization", name: "Toronto FIFA Navigator", url: "https://torontofifa.guide" },
-  publisher: { "@type": "Organization", name: "Toronto FIFA Navigator", url: "https://torontofifa.guide" },
-  mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofifa.guide/blog/toronto-fifa-world-cup-road-closures-2026" },
+  author: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
+  publisher: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofootball.guide/blog/toronto-fifa-world-cup-road-closures-2026" },
   keywords: "Toronto FIFA World Cup 2026, road closures, Exhibition Place, Liberty Village, match day, tournament",
 };
 

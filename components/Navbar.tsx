@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import { Home, MapPin, Calendar, BookOpen, Utensils, Newspaper } from "lucide-react";
 
 const navItems = [
-  { href: "/",          label: "Home",        mobileLabel: "Home",     icon: Home },
-  { href: "/closures",  label: "Closures",    mobileLabel: "Closures", icon: MapPin },
-  { href: "/matches",   label: "Matches",     mobileLabel: "Matches",  icon: Calendar },
-  { href: "/guide",     label: "Guide",       mobileLabel: "Guide",    icon: BookOpen },
-  { href: "/eat-watch", label: "Eat & Watch", mobileLabel: "Venues",   icon: Utensils },
-  { href: "/blog",      label: "Articles",    mobileLabel: "Articles", icon: Newspaper },
+  { href: "/",           label: "Home",          mobileLabel: "Home",      icon: Home },
+  { href: "/match-day",  label: "Match Day",     mobileLabel: "Match Day", icon: MapPin },
+  { href: "/matches",    label: "Matches",       mobileLabel: "Matches",   icon: Calendar },
+  { href: "/guide",      label: "Visitor Guide", mobileLabel: "Guide",     icon: BookOpen },
+  { href: "/eat-watch",  label: "Eat & Watch",   mobileLabel: "Venues",    icon: Utensils },
+  { href: "/blog",       label: "Updates",       mobileLabel: "Updates",   icon: Newspaper },
 ];
 
 export default function Navbar() {
@@ -26,7 +26,7 @@ export default function Navbar() {
             style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.05rem", letterSpacing: "0.1em", color: "white", textTransform: "uppercase" }}
           >
             <span style={{ color: "var(--gold)" }}>⚽ </span>
-            Toronto <span style={{ color: "var(--red)" }}>FIFA</span> 2026
+            Toronto <span style={{ color: "var(--red)" }}>Football</span> 2026
           </Link>
           <div className="flex gap-1">
             {navItems.map(({ href, label }) => {
@@ -64,7 +64,7 @@ export default function Navbar() {
             style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.1em", color: "white", textTransform: "uppercase" }}
           >
             <span style={{ color: "var(--gold)" }}>⚽ </span>
-            Toronto <span style={{ color: "var(--red)" }}>FIFA</span> 2026
+            Toronto <span style={{ color: "var(--red)" }}>Football</span> 2026
           </Link>
           <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: "0.65rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
             World Cup

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Road Closures & Transit Map — FIFA World Cup 2026 Toronto",
+  title: "Match Day — Closures, Transit & Routes",
   description:
-    "Interactive map of road closures, transit changes, and restrictions for FIFA World Cup 2026 in Toronto. Toggle between match day and non-match day views.",
+    "This page has moved. Closures, transit, routes, and what to expect around Toronto Stadium on FIFA World Cup 2026 match days.",
 };
 
 export default function ClosuresLayout({ children }: { children: React.ReactNode }) {

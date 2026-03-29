@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     title: "Getting to Toronto Stadium for the FIFA World Cup: Every Transit Option Explained",
     description:
       "No parking, restricted streets, 45,000 fans. Every way to get to Exhibition Place for FIFA 2026 — ranked by ease.",
-    url: "https://torontofifa.guide/blog/getting-to-toronto-stadium-fifa-world-cup-2026",
+    url: "https://torontofootball.guide/blog/getting-to-toronto-stadium-fifa-world-cup-2026",
     type: "article",
     publishedTime: "2026-03-27T12:00:00Z",
-    authors: ["Toronto FIFA Navigator"],
+    authors: ["Toronto Football Guide"],
     tags: ["FIFA World Cup 2026", "Toronto Stadium", "TTC", "GO Transit", "Exhibition Place transit"],
   },
   twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "TTC shuttle, streetcar, GO Transit, walking, biking — every way in, ranked by ease.",
   },
   alternates: {
-    canonical: "https://torontofifa.guide/blog/getting-to-toronto-stadium-fifa-world-cup-2026",
+    canonical: "https://torontofootball.guide/blog/getting-to-toronto-stadium-fifa-world-cup-2026",
   },
 };
 
@@ -35,9 +35,9 @@ const jsonLd = {
     "No parking, restricted streets, 45,000 fans. Here's every way to get to Toronto Stadium for FIFA 2026 — ranked by ease.",
   datePublished: "2026-03-27T12:00:00Z",
   dateModified: "2026-03-27T12:00:00Z",
-  author: { "@type": "Organization", name: "Toronto FIFA Navigator", url: "https://torontofifa.guide" },
-  publisher: { "@type": "Organization", name: "Toronto FIFA Navigator", url: "https://torontofifa.guide" },
-  mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofifa.guide/blog/getting-to-toronto-stadium-fifa-world-cup-2026" },
+  author: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
+  publisher: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofootball.guide/blog/getting-to-toronto-stadium-fifa-world-cup-2026" },
   keywords: "getting to Toronto Stadium FIFA 2026, TTC shuttle, GO Transit Exhibition, Harbourfront streetcar, FIFA transit guide",
 };
 

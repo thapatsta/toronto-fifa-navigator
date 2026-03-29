@@ -1,23 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { matches } from "@/data/matches";
-import { MapPin, Calendar, BookOpen, Music, ArrowRight } from "lucide-react";
+import { MapPin, Calendar, BookOpen, Music } from "lucide-react";
 import TodayHero from "@/components/TodayHero";
 import MyTournament from "@/components/MyTournament";
 import MatchCardWithPrefs from "@/components/MatchCardWithPrefs";
+import WhatMattersNow from "@/components/WhatMattersNow";
 
 export const metadata: Metadata = {
-  title: "Toronto FIFA Navigator — Your World Cup 2026 Guide",
+  title: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
 };
 
-function formatDay(dateStr: string) {
-  const d = new Date(dateStr + "T12:00:00");
-  return {
-    weekday: d.toLocaleDateString("en-CA", { weekday: "short" }).toUpperCase(),
-    month:   d.toLocaleDateString("en-CA", { month: "short" }).toUpperCase(),
-    day:     d.getDate(),
-  };
-}
 
 export default function HomePage() {
   return (
@@ -26,8 +19,13 @@ export default function HomePage() {
       {/* ── SMART HERO (tournament-aware) ── */}
       <TodayHero />
 
-      {/* ── MY TOURNAMENT ── */}
-      <div style={{ paddingTop: "1.75rem" }}>
+      {/* ── WHAT MATTERS NOW (calendar-aware dynamic block) ── */}
+      <div style={{ paddingTop: "1.25rem" }}>
+        <WhatMattersNow />
+      </div>
+
+      {/* ── MY MATCH PLAN ── */}
+      <div style={{ paddingTop: "1.5rem" }}>
         <MyTournament />
       </div>
 
@@ -54,8 +52,8 @@ export default function HomePage() {
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.625rem" }}>
           {[
-            { href: "/closures",     icon: <MapPin size={18} />,     label: "Road Closures",   sub: "What's closed & when",    bg: "#fff1f1", ic: "var(--red)" },
-            { href: "/matches",      icon: <Calendar size={18} />,   label: "Match Day Guide",  sub: "Transit & getting there", bg: "#f0f4ff", ic: "var(--navy)" },
+            { href: "/match-day",    icon: <MapPin size={18} />,     label: "Match Day",        sub: "Closures, transit & routes", bg: "#fff1f1", ic: "var(--red)" },
+            { href: "/matches",      icon: <Calendar size={18} />,   label: "Matches",          sub: "All 6 Toronto matches",  bg: "#f0f4ff", ic: "var(--navy)" },
             { href: "/fan-festival", icon: <Music size={18} />,      label: "Fan Festival",    sub: "June 11 – July 19",       bg: "#f0fdf4", ic: "#166534" },
             { href: "/guide",        icon: <BookOpen size={18} />,   label: "Visitor Guide",   sub: "Transit, tips & more",    bg: "#faf5ff", ic: "#7e22ce" },
           ].map(({ href, icon, label, sub, bg, ic }) => (

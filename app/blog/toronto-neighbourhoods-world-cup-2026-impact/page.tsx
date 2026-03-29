@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     title: "Toronto Neighbourhoods Affected by the FIFA World Cup 2026",
     description:
       "Liberty Village, Parkdale, Fort York, CityPlace — what's changing in your neighbourhood for the World Cup, and how to plan around it.",
-    url: "https://torontofifa.guide/blog/toronto-neighbourhoods-world-cup-2026-impact",
+    url: "https://torontofootball.guide/blog/toronto-neighbourhoods-world-cup-2026-impact",
     type: "article",
     publishedTime: "2026-03-27T12:00:00Z",
-    authors: ["Toronto FIFA Navigator"],
+    authors: ["Toronto Football Guide"],
     tags: ["FIFA World Cup 2026", "Liberty Village", "Parkdale", "Fort York", "Toronto neighbourhoods"],
   },
   twitter: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "Liberty Village, Parkdale, Fort York, CityPlace — what's changing and how to plan.",
   },
   alternates: {
-    canonical: "https://torontofifa.guide/blog/toronto-neighbourhoods-world-cup-2026-impact",
+    canonical: "https://torontofootball.guide/blog/toronto-neighbourhoods-world-cup-2026-impact",
   },
 };
 
@@ -35,9 +35,9 @@ const jsonLd = {
     "Liberty Village, Parkdale, Fort York, CityPlace — here's how each Toronto neighbourhood is affected by the FIFA World Cup 2026.",
   datePublished: "2026-03-27T12:00:00Z",
   dateModified: "2026-03-27T12:00:00Z",
-  author: { "@type": "Organization", name: "Toronto FIFA Navigator", url: "https://torontofifa.guide" },
-  publisher: { "@type": "Organization", name: "Toronto FIFA Navigator", url: "https://torontofifa.guide" },
-  mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofifa.guide/blog/toronto-neighbourhoods-world-cup-2026-impact" },
+  author: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
+  publisher: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofootball.guide/blog/toronto-neighbourhoods-world-cup-2026-impact" },
   keywords: "Toronto FIFA World Cup neighbourhood impact, Liberty Village World Cup, Fort York Fan Festival, Parkdale road closures, CityPlace FIFA 2026",
 };
 

@@ -2,25 +2,23 @@
 
 import { useState } from "react";
 import { restaurants } from "@/data/restaurants";
-import { watchParties } from "@/data/watchParties";
+import { watchParties, curatedBuckets } from "@/data/watchParties";
 import RestaurantCard from "@/components/RestaurantCard";
 import NeighbourhoodFilter from "@/components/NeighbourhoodFilter";
-import { Monitor, UtensilsCrossed, Star } from "lucide-react";
+import { Monitor, UtensilsCrossed, Star, MapPin, ExternalLink } from "lucide-react";
 import { useTournamentPrefs } from "@/hooks/useTournamentPrefs";
-import { getMatchesForTeam } from "@/lib/tournament";
 import { matches } from "@/data/matches";
 
 const countryGroups = [
-  { country: "Canada", flag: "🇨🇦" },
-  { country: "Ghana", flag: "🇬🇭" },
-  { country: "Panama", flag: "🇵🇦" },
-  { country: "Germany", flag: "🇩🇪" },
+  { country: "Canada",        flag: "🇨🇦" },
+  { country: "Ghana",         flag: "🇬🇭" },
+  { country: "Panama",        flag: "🇵🇦" },
+  { country: "Germany",       flag: "🇩🇪" },
   { country: "Côte d'Ivoire", flag: "🇨🇮" },
-  { country: "Croatia", flag: "🇭🇷" },
-  { country: "Senegal", flag: "🇸🇳" },
+  { country: "Croatia",       flag: "🇭🇷" },
+  { country: "Senegal",       flag: "🇸🇳" },
 ];
 
-/** Countries playing in Toronto today or in the next upcoming Toronto match */
 function getRelevantCountriesForToday(): string[] {
   const todayStr = new Date().toISOString().split("T")[0];
   const todayMatch = matches.find((m) => m.date === todayStr);
@@ -31,68 +29,261 @@ function getRelevantCountriesForToday(): string[] {
 }
 
 export default function EatWatchPage() {
-  const [activeTab, setActiveTab] = useState<"eat" | "watch">("eat");
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [activeTab, setActiveTab] = useState<"watch" | "eat">("watch");
+  const [activeBucket, setActiveBucket] = useState<string | null>(null);
   const [selectedNeighbourhood, setSelectedNeighbourhood] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
   const { prefs, loaded } = useTournamentPrefs();
 
   const relevantCountries = getRelevantCountriesForToday();
   const followedTeam = loaded ? prefs.followedTeam : null;
   const followedFlag = loaded ? prefs.followedFlag : null;
 
-  const allNeighbourhoods = [...new Set(watchParties.map((w) => w.neighbourhood))].filter(
-    (n) => n !== "Multiple Locations"
-  );
+  // Watch tab filtering
+  const allNeighbourhoods = [...new Set(
+    watchParties
+      .filter((w) => w.neighbourhood !== "Multiple Locations")
+      .map((w) => w.neighbourhood)
+  )];
 
-  const filteredRestaurants = restaurants.filter((r) => {
-    const matchCountry = !selectedCountry || r.country === selectedCountry;
-    return matchCountry;
-  });
+  const activeBucketBarIds = activeBucket
+    ? curatedBuckets.find((b) => b.id === activeBucket)?.barIds ?? []
+    : null;
 
   const filteredBars = watchParties.filter((w) => {
-    const matchN = !selectedNeighbourhood || w.neighbourhood === selectedNeighbourhood;
-    return matchN;
+    if (activeBucketBarIds) return activeBucketBarIds.includes(w.id);
+    if (selectedNeighbourhood) return w.neighbourhood === selectedNeighbourhood;
+    return true;
   });
 
+  // Eat tab filtering
+  const filteredRestaurants = restaurants.filter((r) =>
+    !selectedCountry || r.country === selectedCountry
+  );
+
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
+    <div className="max-w-2xl mx-auto px-4 py-6" style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+
+      {/* ── PAGE HEADER ── */}
       <div>
-        <h1 className="text-2xl font-extrabold text-gray-900 mb-1">Eat & Watch</h1>
-        <p className="text-gray-600 text-sm">
-          Eat like the teams playing in Toronto. Watch the games across the city.
+        <h1
+          className="display"
+          style={{ fontSize: "clamp(2rem, 8vw, 2.8rem)", color: "var(--navy)", lineHeight: 0.95, marginBottom: "0.4rem" }}
+        >
+          Eat & Watch
+        </h1>
+        <p style={{ color: "var(--muted)", fontSize: "0.85rem", fontFamily: "'DM Sans', sans-serif" }}>
+          Find the best places in Toronto to watch, eat, and keep the tournament energy going.
         </p>
       </div>
 
-      {/* Tab toggle */}
-      <div className="flex gap-2">
-        <button
-          onClick={() => setActiveTab("eat")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-            activeTab === "eat" ? "bg-primary text-white" : "bg-gray-100 text-gray-700"
-          }`}
-        >
-          <UtensilsCrossed size={15} />
-          Eat Like the Teams
-        </button>
+      {/* ── TAB TOGGLE ── */}
+      <div style={{ display: "flex", gap: "0.5rem" }}>
         <button
           onClick={() => setActiveTab("watch")}
-          className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-            activeTab === "watch" ? "bg-primary text-white" : "bg-gray-100 text-gray-700"
-          }`}
+          style={{
+            flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem",
+            padding: "0.65rem 1rem", borderRadius: "12px",
+            fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.85rem",
+            letterSpacing: "0.05em", textTransform: "uppercase", cursor: "pointer",
+            transition: "all 0.15s",
+            border: activeTab === "watch" ? "1.5px solid var(--navy)" : "1.5px solid var(--border)",
+            background: activeTab === "watch" ? "var(--navy)" : "transparent",
+            color: activeTab === "watch" ? "white" : "var(--muted)",
+          }}
         >
-          <Monitor size={15} />
-          Watch Parties & Bars
+          <Monitor size={15} /> Watch Bars & Viewing
+        </button>
+        <button
+          onClick={() => setActiveTab("eat")}
+          style={{
+            flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: "0.4rem",
+            padding: "0.65rem 1rem", borderRadius: "12px",
+            fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.85rem",
+            letterSpacing: "0.05em", textTransform: "uppercase", cursor: "pointer",
+            transition: "all 0.15s",
+            border: activeTab === "eat" ? "1.5px solid var(--navy)" : "1.5px solid var(--border)",
+            background: activeTab === "eat" ? "var(--navy)" : "transparent",
+            color: activeTab === "eat" ? "white" : "var(--muted)",
+          }}
+        >
+          <UtensilsCrossed size={15} /> Eat Like the Teams
         </button>
       </div>
 
+      {/* ══════════════════════════════════════════
+          WATCH TAB
+      ══════════════════════════════════════════ */}
+      {activeTab === "watch" && (
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+
+          {/* Curated buckets */}
+          <div>
+            <p className="label" style={{ fontSize: "0.6rem", color: "var(--muted)", marginBottom: "0.5rem" }}>
+              CURATED PICKS
+            </p>
+            <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
+              {curatedBuckets.map((bucket) => (
+                <button
+                  key={bucket.id}
+                  onClick={() => {
+                    setActiveBucket(activeBucket === bucket.id ? null : bucket.id);
+                    setSelectedNeighbourhood("");
+                  }}
+                  style={{
+                    padding: "0.35rem 0.85rem", borderRadius: "99px", cursor: "pointer",
+                    fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+                    fontSize: "0.75rem", letterSpacing: "0.03em",
+                    transition: "all 0.15s",
+                    border: activeBucket === bucket.id ? "1.5px solid var(--navy)" : "1.5px solid var(--border)",
+                    background: activeBucket === bucket.id ? "var(--navy)" : "transparent",
+                    color: activeBucket === bucket.id ? "white" : "var(--navy)",
+                  }}
+                >
+                  {bucket.label}
+                </button>
+              ))}
+              {activeBucket && (
+                <button
+                  onClick={() => setActiveBucket(null)}
+                  style={{
+                    padding: "0.35rem 0.85rem", borderRadius: "99px", cursor: "pointer",
+                    fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+                    fontSize: "0.75rem", letterSpacing: "0.03em",
+                    background: "transparent", border: "1.5px solid var(--border)",
+                    color: "var(--muted)",
+                  }}
+                >
+                  × Clear
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Neighbourhood filter (only shown when no bucket active) */}
+          {!activeBucket && (
+            <div>
+              <p className="label" style={{ fontSize: "0.6rem", color: "var(--muted)", marginBottom: "0.5rem" }}>
+                BY NEIGHBOURHOOD
+              </p>
+              <NeighbourhoodFilter
+                neighbourhoods={allNeighbourhoods}
+                selected={selectedNeighbourhood}
+                onChange={setSelectedNeighbourhood}
+              />
+            </div>
+          )}
+
+          {/* Bar cards */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            {filteredBars.map((bar) => (
+              <div
+                key={bar.id}
+                style={{
+                  borderRadius: "16px", border: "1.5px solid var(--border)",
+                  background: "var(--card)", overflow: "hidden",
+                }}
+              >
+                {/* Card header */}
+                <div style={{ padding: "0.85rem 1rem 0.6rem" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: "0.5rem", marginBottom: "0.4rem" }}>
+                    <div>
+                      <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.05rem", color: "var(--navy)", lineHeight: 1.1 }}>
+                        {bar.name}
+                      </p>
+                      <p style={{ fontSize: "0.72rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", marginTop: "2px", display: "flex", alignItems: "center", gap: "3px" }}>
+                        <MapPin size={10} /> {bar.neighbourhood}
+                      </p>
+                    </div>
+                    {/* Screen badges */}
+                    <div style={{ display: "flex", gap: "0.3rem", flexShrink: 0 }}>
+                      {bar.hasOutdoorScreen && (
+                        <span style={{ fontSize: "0.6rem", background: "#dcfce7", color: "#166534", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, padding: "2px 7px", borderRadius: "99px" }}>
+                          📺 Outdoor
+                        </span>
+                      )}
+                      {bar.hasPatio && (
+                        <span style={{ fontSize: "0.6rem", background: "#dbeafe", color: "#1e40af", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, padding: "2px 7px", borderRadius: "99px" }}>
+                          🌿 Patio
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <p style={{ fontSize: "0.8rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5, marginBottom: "0.65rem" }}>
+                    {bar.description}
+                  </p>
+
+                  {/* Tag chips */}
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem", marginBottom: "0.65rem" }}>
+                    {bar.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        style={{
+                          padding: "2px 8px", borderRadius: "99px",
+                          background: "rgba(13,27,42,0.06)",
+                          fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+                          fontSize: "0.62rem", color: "var(--navy)", letterSpacing: "0.03em",
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Card footer: Map action */}
+                <div style={{ padding: "0.5rem 1rem 0.7rem", borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+                  <a
+                    href={bar.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: "0.3rem",
+                      fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+                      fontSize: "0.72rem", letterSpacing: "0.06em", textTransform: "uppercase",
+                      color: "var(--navy)", textDecoration: "none",
+                    }}
+                  >
+                    <ExternalLink size={11} /> Open in Maps
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Match day tip */}
+          <div
+            style={{
+              background: "rgba(232,160,32,0.1)", border: "1px solid rgba(232,160,32,0.3)",
+              borderRadius: "14px", padding: "0.75rem 1rem",
+              fontSize: "0.8rem", color: "var(--navy)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5,
+            }}
+          >
+            <strong>On match days:</strong> Toronto sports bars fill up fast — especially for evening kickoffs.
+            Arrive 30–60 minutes early. The Fan Festival at Fort York is the official free outdoor option
+            if bars are full.
+          </div>
+
+          {/* Last updated */}
+          <p style={{ fontSize: "0.68rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", textAlign: "center" }}>
+            Last updated: March 2026 · Always confirm hours before heading out
+          </p>
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════
+          EAT TAB
+      ══════════════════════════════════════════ */}
       {activeTab === "eat" && (
-        <div className="space-y-6">
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+
           {/* Personalised prompt — followed team */}
           {followedTeam && !selectedCountry && (
             <button
               onClick={() => setSelectedCountry(followedTeam)}
               style={{
-                width: "100%", display: "flex", alignItems: "center", gap: "0.6rem",
+                display: "flex", alignItems: "center", gap: "0.6rem",
                 padding: "0.75rem 1rem", borderRadius: "14px",
                 background: "var(--navy)", color: "white",
                 border: "none", cursor: "pointer", textAlign: "left",
@@ -112,7 +303,7 @@ export default function EatWatchPage() {
 
           {/* Today's match nudge */}
           {!followedTeam && relevantCountries.length > 0 && !selectedCountry && (
-            <div style={{ background: "var(--cream-2)", borderRadius: "14px", padding: "0.75rem 1rem" }}>
+            <div style={{ background: "var(--card)", border: "1.5px solid var(--border)", borderRadius: "14px", padding: "0.75rem 1rem" }}>
               <p style={{ fontSize: "0.72rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", marginBottom: "0.5rem" }}>
                 🍽️ Restaurants matching today&apos;s Toronto match
               </p>
@@ -140,24 +331,24 @@ export default function EatWatchPage() {
           )}
 
           {/* Country filter pills */}
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedCountry("")}
-              className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                selectedCountry === "" ? "bg-primary text-white" : "bg-gray-100 text-gray-700"
-              }`}
-            >
-              All
-            </button>
-            {countryGroups.map(({ country, flag }) => (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+            {[{ country: "All", flag: "" }, ...countryGroups].map(({ country, flag }) => (
               <button
                 key={country}
-                onClick={() => setSelectedCountry(country)}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-                  selectedCountry === country ? "bg-primary text-white" : "bg-gray-100 text-gray-700"
-                }`}
+                onClick={() => setSelectedCountry(country === "All" ? "" : country)}
+                style={{
+                  padding: "0.3rem 0.85rem", borderRadius: "99px", cursor: "pointer",
+                  fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.78rem",
+                  letterSpacing: "0.03em", transition: "all 0.15s",
+                  border: (country === "All" ? selectedCountry === "" : selectedCountry === country)
+                    ? "1.5px solid var(--navy)" : "1.5px solid var(--border)",
+                  background: (country === "All" ? selectedCountry === "" : selectedCountry === country)
+                    ? "var(--navy)" : "transparent",
+                  color: (country === "All" ? selectedCountry === "" : selectedCountry === country)
+                    ? "white" : "var(--navy)",
+                }}
               >
-                {flag} {country}
+                {flag ? `${flag} ` : ""}{country}
               </button>
             ))}
           </div>
@@ -165,10 +356,10 @@ export default function EatWatchPage() {
           {/* Grouped by country */}
           {selectedCountry ? (
             <div>
-              <h2 className="font-bold text-gray-900 mb-3">
-                {countryGroups.find((c) => c.country === selectedCountry)?.flag} {selectedCountry} Restaurants
+              <h2 className="display" style={{ fontSize: "1.4rem", color: "var(--navy)", lineHeight: 1, marginBottom: "0.75rem" }}>
+                {countryGroups.find((c) => c.country === selectedCountry)?.flag} {selectedCountry}
               </h2>
-              <div className="grid grid-cols-1 gap-3">
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
                 {filteredRestaurants.map((r) => (
                   <RestaurantCard key={r.id} restaurant={r} />
                 ))}
@@ -180,11 +371,10 @@ export default function EatWatchPage() {
               if (countryRests.length === 0) return null;
               return (
                 <div key={country}>
-                  <h2 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
-                    <span>{flag}</span>
-                    <span>{country}</span>
+                  <h2 className="display" style={{ fontSize: "1.3rem", color: "var(--navy)", lineHeight: 1, marginBottom: "0.6rem", display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                    <span>{flag}</span> <span>{country}</span>
                   </h2>
-                  <div className="grid grid-cols-1 gap-3">
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
                     {countryRests.map((r) => (
                       <RestaurantCard key={r.id} restaurant={r} />
                     ))}
@@ -194,70 +384,9 @@ export default function EatWatchPage() {
             })
           )}
 
-          <p className="text-xs text-gray-500 text-center">
-            Restaurant info verified as of March 2026. Always call ahead or check Google Maps for current hours.
+          <p style={{ fontSize: "0.7rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", textAlign: "center" }}>
+            Curated for inspiration, not official team partnerships. Verify hours before visiting.
           </p>
-        </div>
-      )}
-
-      {activeTab === "watch" && (
-        <div className="space-y-5">
-          <div>
-            <p className="text-sm text-gray-600 mb-3">
-              Filter by neighbourhood:
-            </p>
-            <NeighbourhoodFilter
-              neighbourhoods={allNeighbourhoods}
-              selected={selectedNeighbourhood}
-              onChange={setSelectedNeighbourhood}
-            />
-          </div>
-
-          <div className="space-y-3">
-            {filteredBars.map((bar) => (
-              <div key={bar.id} className="card hover:shadow-md transition-shadow">
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <h3 className="font-semibold text-gray-900">{bar.name}</h3>
-                  <div className="flex gap-1 shrink-0">
-                    {bar.hasOutdoorScreen && (
-                      <span className="text-xs bg-green-100 text-green-800 font-semibold px-2 py-0.5 rounded-full">
-                        📺 Outdoor
-                      </span>
-                    )}
-                    {bar.hasPatio && (
-                      <span className="text-xs bg-blue-100 text-blue-800 font-semibold px-2 py-0.5 rounded-full">
-                        🌿 Patio
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <p className="text-sm text-gray-600 mb-3">{bar.description}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex flex-wrap gap-1">
-                    {bar.features.map((f) => (
-                      <span key={f} className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
-                        {f}
-                      </span>
-                    ))}
-                  </div>
-                  <a
-                    href={bar.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-semibold text-primary hover:text-primary-light transition-colors ml-2 shrink-0"
-                  >
-                    📍 {bar.neighbourhood}
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="bg-amber-50 rounded-xl p-3 text-xs text-amber-800">
-            <strong>Tip:</strong> On match days, Toronto sports bars fill up fast — especially for evening kickoffs.
-            Arrive 30–60 minutes early to get a seat. The Fan Festival at Fort York is the official free option
-            if you can&apos;t get into a bar.
-          </div>
         </div>
       )}
     </div>

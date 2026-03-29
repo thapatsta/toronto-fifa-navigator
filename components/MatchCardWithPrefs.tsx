@@ -2,7 +2,7 @@
 
 import { Match } from "@/data/matches";
 import { useTournamentPrefs } from "@/hooks/useTournamentPrefs";
-import { MapPin, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getDirectionsUrl } from "@/lib/tournament";
 
@@ -99,7 +99,7 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                 </span>
               </div>
 
-              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", flexWrap: "wrap", justifyContent: "flex-end" }}>
                 {isNext && (
                   <span className="label" style={{ background: "white", color: "var(--red)", fontSize: "0.55rem", padding: "2px 7px", borderRadius: "99px" }}>
                     Next Up
@@ -112,6 +112,24 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                 )}
                 {isPast && (
                   <span className="label" style={{ color: "var(--muted)", fontSize: "0.55rem" }}>Final</span>
+                )}
+                {/* Significance label */}
+                {match.significance && !isPast && (
+                  <span
+                    className="label"
+                    style={{
+                      fontSize: "0.55rem", padding: "2px 7px", borderRadius: "99px",
+                      background: match.significance === "Knockout match"
+                        ? "rgba(120,0,200,0.15)"
+                        : (isNext || isFollowed) ? "rgba(255,255,255,0.15)" : "rgba(232,160,32,0.15)",
+                      color: match.significance === "Knockout match"
+                        ? "#6b21a8"
+                        : (isNext || isFollowed) ? "rgba(255,255,255,0.9)" : "var(--gold)",
+                      border: match.significance === "Knockout match" ? "1px solid rgba(120,0,200,0.2)" : "none",
+                    }}
+                  >
+                    {match.significance}
+                  </span>
                 )}
                 <span
                   className="label"
@@ -150,42 +168,70 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                 </div>
               </div>
 
-              {/* Bottom row */}
-              <div style={{ marginTop: "0.75rem", paddingTop: "0.6rem", borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <span style={{ display: "flex", alignItems: "center", gap: "0.25rem", fontSize: "0.72rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif" }}>
-                  <MapPin size={11} /> Toronto Stadium
-                </span>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  {/* Save toggle */}
-                  {loaded && (
-                    <button
-                      onClick={() => toggleSavedMatch(match.id)}
-                      aria-label={isSaved ? "Unsave match" : "Save match"}
-                      style={{
-                        fontSize: "0.7rem", color: isSaved ? "var(--red)" : "var(--muted)",
-                        background: "none", border: "none", cursor: "pointer",
-                        fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
-                        letterSpacing: "0.04em", display: "flex", alignItems: "center", gap: "3px",
-                        padding: 0,
-                      }}
-                    >
-                      {isSaved ? "✓ Saved" : "+ Save"}
-                    </button>
-                  )}
-                  {/* Directions on match day, match guide otherwise */}
-                  <Link
-                    href="/matches"
+              {/* Utility note */}
+              {match.utilityNote && !isPast && (
+                <p style={{
+                  marginTop: "0.6rem", fontSize: "0.72rem", color: "var(--muted)",
+                  fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4,
+                }}>
+                  {match.utilityNote}
+                </p>
+              )}
+
+              {/* Actions row: Save · Match Day Info · Directions */}
+              <div style={{ marginTop: "0.7rem", paddingTop: "0.6rem", borderTop: "1px solid var(--border)", display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+                {/* Save */}
+                {loaded && (
+                  <button
+                    onClick={() => toggleSavedMatch(match.id)}
+                    aria-label={isSaved ? "Unsave match" : "Save match"}
                     style={{
-                      display: "flex", alignItems: "center", gap: "0.25rem",
-                      fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.75rem",
-                      letterSpacing: "0.06em", textTransform: "uppercase",
-                      color: (isNext || isFollowed) ? "var(--red)" : "var(--muted)",
-                      transition: "color 0.15s", textDecoration: "none",
+                      fontSize: "0.7rem", color: isSaved ? "var(--red)" : "var(--muted)",
+                      background: isSaved ? "rgba(204,41,54,0.07)" : "transparent",
+                      border: `1px solid ${isSaved ? "var(--red)" : "var(--border)"}`,
+                      borderRadius: "8px", cursor: "pointer",
+                      fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+                      letterSpacing: "0.04em", display: "flex", alignItems: "center", gap: "4px",
+                      padding: "4px 9px",
+                      transition: "all 0.15s",
                     }}
                   >
-                    Guide <ArrowRight size={12} />
-                  </Link>
-                </div>
+                    {isSaved ? "✓ Saved" : "+ Save"}
+                  </button>
+                )}
+                {/* Separator */}
+                <span style={{ color: "var(--border)", fontSize: "0.7rem" }}>·</span>
+                {/* Match Day Info */}
+                <Link
+                  href="/match-day"
+                  style={{
+                    display: "flex", alignItems: "center", gap: "3px",
+                    fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.7rem",
+                    letterSpacing: "0.05em", textTransform: "uppercase",
+                    color: "var(--muted)",
+                    textDecoration: "none", padding: "4px 9px",
+                    border: "1px solid var(--border)", borderRadius: "8px",
+                  }}
+                >
+                  Match Day Info
+                </Link>
+                {/* Separator */}
+                <span style={{ color: "var(--border)", fontSize: "0.7rem" }}>·</span>
+                {/* Directions */}
+                <a
+                  href={getDirectionsUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex", alignItems: "center", gap: "3px",
+                    fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.7rem",
+                    letterSpacing: "0.05em", textTransform: "uppercase",
+                    color: (isNext || isFollowed) ? "var(--red)" : "var(--muted)",
+                    textDecoration: "none",
+                  }}
+                >
+                  Directions <ArrowRight size={11} />
+                </a>
               </div>
 
               {match.notes && (
