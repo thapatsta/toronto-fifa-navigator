@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Match } from "@/data/matches";
 import { formatDate } from "@/lib/utils";
 import { getDirectionsUrl } from "@/lib/tournament";
+import { trackEvent } from "@/lib/analytics";
 import { ChevronDown, ChevronUp, MapPin, Clock, Bookmark, BookmarkCheck, Navigation } from "lucide-react";
 import TransitOption from "./TransitOption";
 
@@ -113,6 +114,7 @@ export default function MatchCard({
             href={getDirectionsUrl()}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("directions_click", { source: "match_card", match_id: match.id })}
             style={{
               display: "flex",
               alignItems: "center",

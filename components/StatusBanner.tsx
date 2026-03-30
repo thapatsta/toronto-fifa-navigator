@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getCurrentStatus } from "@/lib/utils";
 import { getDirectionsUrl } from "@/lib/tournament";
+import { trackEvent } from "@/lib/analytics";
 
 export default function StatusBanner() {
   const [status, setStatus] = useState<ReturnType<typeof getCurrentStatus> | null>(null);
@@ -37,6 +38,7 @@ export default function StatusBanner() {
           href={getDirectionsUrl()}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent("directions_click", { source: "status_banner" })}
           className="label"
           style={{
             fontSize: "0.6rem",

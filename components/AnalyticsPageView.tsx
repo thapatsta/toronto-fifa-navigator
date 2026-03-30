@@ -10,15 +10,15 @@ export default function AnalyticsPageView() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const query = searchParams.toString();
-    const fullPath = query ? `${pathname}?${query}` : pathname;
-
     if (!GA_MEASUREMENT_ID) {
       return;
     }
 
     if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("config", GA_MEASUREMENT_ID, { page_path: fullPath });
+      window.gtag("config", GA_MEASUREMENT_ID, {
+        page_location: window.location.href,
+        page_title: document.title,
+      });
     }
   }, [pathname, searchParams]);
 

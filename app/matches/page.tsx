@@ -5,13 +5,102 @@ import MatchesWithPrefs from "@/components/MatchesWithPrefs";
 import MatchPageBar from "@/components/MatchPageBar";
 
 export const metadata: Metadata = {
-  title: "Matches — All 6 Toronto FIFA World Cup Matches",
-  description: "All six Toronto World Cup matches at Toronto Stadium, with match-day planning, transit notes, and saved-plan support.",
+  title: "FIFA World Cup 2026 Toronto Match Schedule & Dates",
+  description: "All 6 FIFA World Cup 2026 matches in Toronto at Toronto Stadium (Exhibition Place) — dates, times, teams, and match-day transit planning.",
+  openGraph: {
+    title: "FIFA World Cup 2026 Toronto — All 6 Matches",
+    description: "Dates, times, and teams for all 6 World Cup matches in Toronto. Plus match-day transit and directions.",
+    url: "https://torontofootball.guide/matches",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://torontofootball.guide/matches",
+  },
 };
+
+const sportsEventsJsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "FIFA World Cup 2026 — Canada vs European Playoff A Winner",
+    startDate: "2026-06-12T15:00:00-04:00",
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium at Exhibition Place",
+      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
+    },
+    organizer: { "@type": "Organization", name: "FIFA" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "FIFA World Cup 2026 — Ghana vs Panama",
+    startDate: "2026-06-17T19:00:00-04:00",
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium at Exhibition Place",
+      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
+    },
+    organizer: { "@type": "Organization", name: "FIFA" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "FIFA World Cup 2026 — Germany vs Côte d'Ivoire",
+    startDate: "2026-06-20T16:00:00-04:00",
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium at Exhibition Place",
+      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
+    },
+    organizer: { "@type": "Organization", name: "FIFA" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "FIFA World Cup 2026 — Croatia vs Panama",
+    startDate: "2026-06-23T19:00:00-04:00",
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium at Exhibition Place",
+      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
+    },
+    organizer: { "@type": "Organization", name: "FIFA" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "FIFA World Cup 2026 — Senegal vs FIFA Playoff 2 Winner",
+    startDate: "2026-06-26T15:00:00-04:00",
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium at Exhibition Place",
+      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
+    },
+    organizer: { "@type": "Organization", name: "FIFA" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "FIFA World Cup 2026 — Round of 32: Group K vs Group L",
+    startDate: "2026-07-02T19:00:00-04:00",
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium at Exhibition Place",
+      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
+    },
+    organizer: { "@type": "Organization", name: "FIFA" },
+  },
+];
 
 export default function MatchesPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 space-y-6" style={{ paddingBottom: "7rem" }}>
+      {/* SportsEvent JSON-LD for all 6 matches */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventsJsonLd) }}
+      />
       {/* Mobile sticky action bar: Save · Directions · Match Day · Bars */}
       <MatchPageBar />
       <div>

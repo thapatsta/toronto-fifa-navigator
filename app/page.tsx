@@ -5,6 +5,7 @@ import { MapPin, Utensils, Construction, BookOpen } from "lucide-react";
 import TodayHero from "@/components/TodayHero";
 import MyTournament from "@/components/MyTournament";
 import MatchCardWithPrefs from "@/components/MatchCardWithPrefs";
+import EmailSignup from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
   title: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
@@ -29,8 +30,27 @@ export default function HomePage() {
     ],
   }));
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Toronto Football Guide",
+    "url": "https://torontofootball.guide",
+    "description": "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://torontofootball.guide/?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  };
+
   return (
     <div style={{ background: "var(--cream)" }}>
+
+      {/* WebSite JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
 
       {/* Event JSON-LD for all matches */}
       <script
@@ -60,6 +80,11 @@ export default function HomePage() {
       {/* ── MY MATCH PLAN (compact unless team followed) ── */}
       <div>
         <MyTournament />
+      </div>
+
+      {/* ── EMAIL SIGNUP ── */}
+      <div className="px-4 max-w-2xl mx-auto">
+        <EmailSignup />
       </div>
 
       {/* ── QUICK LINKS (reordered: transit/closures/bars/guide) ── */}

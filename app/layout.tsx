@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StatusBanner from "@/components/StatusBanner";
 import AnalyticsPageView from "@/components/AnalyticsPageView";
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_MEASUREMENT_ID = "G-SJ5CZYMJ89";
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Toronto Football Guide",
   },
   description:
-    "Match schedules, match-day transit, road closures, bars, and visitor essentials for FIFA World Cup 2026 in Toronto.",
+    "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto. Interactive map and match day guides.",
   metadataBase: new URL("https://torontofootball.guide"),
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
@@ -23,26 +22,26 @@ export const metadata: Metadata = {
     apple: [{ url: "/icon.svg" }],
   },
   openGraph: {
-    title: "Toronto Football Guide",
-    description: "Everything you need for FIFA World Cup 2026 in Toronto — matches, match day, bars, transit, and city essentials.",
+    title: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
+    description: "Road closures, transit, match schedule & visitor guide for World Cup 2026 in Toronto.",
     url: "https://torontofootball.guide",
     siteName: "Toronto Football Guide",
     locale: "en_CA",
     type: "website",
     images: [
       {
-        url: "https://torontofootball.guide/main-image.svg",
+        url: "https://torontofootball.guide/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Toronto Football Guide — FIFA World Cup 2026",
+        alt: "Toronto Football Guide — Road closures and transit for FIFA World Cup 2026",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Toronto Football Guide",
-    description: "FIFA World Cup 2026 in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.",
-    images: ["https://torontofootball.guide/main-image.svg"],
+    title: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
+    description: "Road closures, transit, match schedule & visitor guide for World Cup 2026 in Toronto.",
+    images: ["https://torontofootball.guide/og-image.png"],
   },
 };
 
@@ -54,23 +53,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* ── Google Analytics 4 ── */}
-        {GA_MEASUREMENT_ID ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
-              `}
-            </Script>
-          </>
-        ) : null}
+        {/* ── Google Analytics 4 — dangerouslySetInnerHTML for Cloudflare Pages compatibility ── */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_MEASUREMENT_ID}');
+            `,
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col">
         <StatusBanner />

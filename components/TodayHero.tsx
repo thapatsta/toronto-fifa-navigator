@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { getTournamentStatus, getDirectionsUrl, TournamentStatus } from "@/lib/tournament";
+import { trackEvent } from "@/lib/analytics";
 import { Navigation, ArrowRight, Music } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 
@@ -85,6 +86,7 @@ function MatchDayHero({ match }: { match: NonNullable<TournamentStatus["todayMat
             href={getDirectionsUrl()}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent("directions_click", { source: "match_day_hero" })}
             style={{
               display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
               padding: "0.8rem 1rem", borderRadius: "14px",
