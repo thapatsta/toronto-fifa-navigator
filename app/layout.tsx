@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Toronto Football Guide",
     description: "FIFA World Cup 2026 in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.",
+    images: ["https://torontofootball.guide/og-image.png"],
   },
 };
 

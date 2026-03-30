@@ -1,0 +1,26 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <circle cx="490" cy="530" r="410" fill="#0B2454"/>
+    <circle cx="490" cy="530" r="410" stroke="#FFFFFF" stroke-width="26"/>
+    <circle cx="490" cy="530" r="360" stroke="#FFFFFF" stroke-width="18"/>
+
+    <path d="M490 170L506 170L506 640L490 640Z" fill="#FFFFFF"/>
+    <path d="M498 74L520 74L520 222L498 222Z" fill="#0B2454"/>
+    <rect x="472" y="220" width="52" height="26" rx="13" fill="#FFFFFF"/>
+    <rect x="466" y="246" width="64" height="20" rx="10" fill="#FFFFFF"/>
+    <rect x="460" y="266" width="76" height="20" rx="10" fill="#FFFFFF"/>
+
+    <polygon points="250,430 360,352 458,388 464,504 372,572 252,538" fill="#E6E6E8" stroke="#0B2454" stroke-width="10"/>
+    <polygon points="518,392 620,338 718,384 724,498 634,560 522,522" fill="#E6E6E8" stroke="#0B2454" stroke-width="10"/>
+    <polygon points="216,612 320,544 420,572 444,696 352,786 228,764" fill="#E6E6E8" stroke="#0B2454" stroke-width="10"/>
+
+    <path d="M408 814C484 778 592 778 672 810" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+    <path d="M334 840C428 774 592 752 734 784" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round"/>
+
+    <path d="M396 774V666H426V774H396Z" fill="#FFFFFF"/>
+    <path d="M426 774V618H456V774H426Z" fill="#FFFFFF"/>
+    <path d="M456 774V578H486V774H456Z" fill="#FFFFFF"/>
+
+    <path d="M630 548L664 600L728 578L706 652L774 710L694 730L680 804L618 760L550 804L572 736L504 684L578 662L592 588L630 548Z" fill="#FF0033" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  </g>
+</svg>
