@@ -1,0 +1,17 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#001F54"/>
+  <rect x="90" y="55" width="1020" height="520" rx="30" fill="#083274" stroke="#F4F6FA" stroke-width="3"/>
+  <g transform="translate(140 90) scale(0.42)">
+    <rect width="1024" height="1024" fill="#001F54"/>
+    <path d="M220 520C220 360 340 230 500 220C650 210 790 300 830 445" stroke="#F4F6FA" stroke-width="20" stroke-linecap="round"/>
+    <path d="M800 500C795 620 700 720 580 740C470 760 360 720 290 640" stroke="#F4F6FA" stroke-width="20" stroke-linecap="round"/>
+    <polygon points="330,290 405,255 485,290 486,390 400,445 332,418" fill="#D9DDE2"/>
+    <polygon points="510,290 586,255 665,290 668,392 592,440 510,388" fill="#D9DDE2"/>
+    <polygon points="246,515 320,450 400,472 430,575 355,660 278,640" fill="#D9DDE2"/>
+    <polygon points="408,588 500,590 560,652 520,758 440,742 386,676" fill="#D9DDE2"/>
+    <path d="M640 410L610 470L560 445L560 510L520 470L498 505L448 490L454 548L410 575L450 618L485 654L462 685L564 682L555 745L605 744L612 683L700 700L694 653L770 607L725 582L744 538L700 542L682 500L642 525L640 410Z" fill="#E1061B" stroke="#F4F6FA" stroke-width="12" stroke-linejoin="round"/>
+  </g>
+  <text x="620" y="285" fill="#FFFFFF" font-size="66" font-family="Arial, sans-serif" font-weight="700">Toronto Football Guide</text>
+  <text x="620" y="350" fill="#FFFFFF" font-size="34" font-family="Arial, sans-serif">FIFA World Cup 2026 • Toronto</text>
+  <text x="620" y="410" fill="#E8A020" font-size="30" font-family="Arial, sans-serif">Matches • Transit • Closures • Fan Festival</text>
+</svg>
