@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   description:
     "Match schedules, match-day transit, road closures, bars, and visitor essentials for FIFA World Cup 2026 in Toronto.",
   metadataBase: new URL("https://torontofootball.guide"),
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: "/icon.svg",
+    apple: [{ url: "/icon.svg" }],
+  },
   openGraph: {
     title: "Toronto Football Guide",
     description: "Everything you need for FIFA World Cup 2026 in Toronto — matches, match day, bars, transit, and city essentials.",
@@ -25,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://torontofootball.guide/og-image.png",
+        url: "https://torontofootball.guide/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Toronto Football Guide — FIFA World Cup 2026",
@@ -36,6 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Toronto Football Guide",
     description: "FIFA World Cup 2026 in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.",
+    images: ["https://torontofootball.guide/twitter-image.svg"],
   },
 };
 
