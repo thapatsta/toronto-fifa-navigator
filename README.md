@@ -27,8 +27,8 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-SJ5CZYMJ89
 ```
 
 - Get this value from **Google Analytics → Admin → Data Streams → Web stream → Measurement ID**.
-- Set it in your local `.env.local` and in your deployment environment (e.g. Vercel Project Settings → Environment Variables).
-- In Vercel, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` for **Production**, **Preview**, and **Development** environments so analytics behavior matches what you see locally.
+- Set it in your local `.env.local` and in your deployment environment (Cloudflare Pages/Workers).
+- In Cloudflare, add `NEXT_PUBLIC_GA_MEASUREMENT_ID` for **Production** and **Preview** so analytics behavior matches what you see locally.
 - If this variable is not set, analytics scripts/pageview tracking are skipped.
 
 ## Stack
@@ -38,16 +38,17 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-SJ5CZYMJ89
 - Leaflet.js + react-leaflet (maps)
 - Lucide React (icons)
 
-## Deploying to Vercel
+## Deploying to Cloudflare (GitHub repo)
 
-Push to GitHub, connect to Vercel. No extra configuration needed.
+Push to GitHub, then connect the repository to Cloudflare so Cloudflare builds and hosts this Next.js app on deploy.
 
-Vercel's role in this codebase:
-- It builds and hosts the Next.js app from this repository on every push.
-- It injects environment variables (like `NEXT_PUBLIC_GA_MEASUREMENT_ID`) into your app build and runtime.
-- For GA specifically, your analytics scripts in `app/layout.tsx` and client pageview tracking read this value from Vercel env vars, so no code changes are needed when the ID changes.
+Cloudflare's role in this codebase:
+- It pulls from your GitHub repo and triggers builds on push.
+- It hosts the built app and serves your production + preview deployments.
+- It injects environment variables (like `NEXT_PUBLIC_GA_MEASUREMENT_ID`) into build/runtime.
+- For GA specifically, `app/layout.tsx` and `components/AnalyticsPageView.tsx` read this value from environment variables, so no code change is needed when the ID changes.
 
-For a custom domain like `torontofootball.guide`, add it in the Vercel dashboard under Project → Settings → Domains.
+For a custom domain like `torontofootball.guide`, add/manage it in Cloudflare for the deployed project.
 
 ## Data Updates
 
