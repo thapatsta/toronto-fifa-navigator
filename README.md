@@ -18,6 +18,18 @@ npm run build
 npm start
 ```
 
+## Google Analytics (GA4)
+
+This project reads the GA4 Measurement ID from:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+- Get this value from **Google Analytics → Admin → Data Streams → Web stream → Measurement ID**.
+- Set it in your local `.env.local` and in your deployment environment (e.g. Vercel Project Settings → Environment Variables).
+- If this variable is not set, analytics scripts/pageview tracking are skipped.
+
 ## Stack
 
 - Next.js 14 (App Router)
