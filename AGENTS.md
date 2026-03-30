@@ -9,7 +9,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Project: Toronto FIFA Navigator
 
 A mobile-first (web-first) guide and companion app for FIFA World Cup 2026 in Toronto.
-Live at: **https://torontofifa.guide**
+Live at: **https://torontofootball.guide**
 
 ## What this app is
 
@@ -130,7 +130,7 @@ Shape:
 - Sitemap at `/sitemap.ts` — covers all pages and blog posts
 - Blog posts have canonical URLs, Open Graph `type: "article"`, and Article JSON-LD
 - `robots.ts` at `/app/robots.ts`
-- Domain: `torontofifa.guide`
+- Domain: `torontofootball.guide`
 
 ---
 

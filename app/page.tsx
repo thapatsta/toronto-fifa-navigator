@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { matches } from "@/data/matches";
-import { MapPin, Calendar, BookOpen, Music } from "lucide-react";
+import { MapPin, Utensils, Construction, BookOpen } from "lucide-react";
 import TodayHero from "@/components/TodayHero";
 import MyTournament from "@/components/MyTournament";
 import MatchCardWithPrefs from "@/components/MatchCardWithPrefs";
-import WhatMattersNow from "@/components/WhatMattersNow";
 
 export const metadata: Metadata = {
   title: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
@@ -13,24 +12,37 @@ export const metadata: Metadata = {
 
 
 export default function HomePage() {
+  // Event JSON-LD for aggregate schedule (helps Google show rich results)
+  const eventsJsonLd = matches.map((m) => ({
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: `${m.homeTeam} vs ${m.awayTeam} — FIFA World Cup 2026`,
+    startDate: m.date,
+    location: {
+      "@type": "Place",
+      name: "Toronto Stadium",
+      address: { "@type": "PostalAddress", addressLocality: "Toronto", addressRegion: "ON", addressCountry: "CA" },
+    },
+    competitor: [
+      { "@type": "SportsTeam", name: m.homeTeam },
+      { "@type": "SportsTeam", name: m.awayTeam },
+    ],
+  }));
+
   return (
     <div style={{ background: "var(--cream)" }}>
+
+      {/* Event JSON-LD for all matches */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+      />
 
       {/* ── SMART HERO (tournament-aware) ── */}
       <TodayHero />
 
-      {/* ── WHAT MATTERS NOW (calendar-aware dynamic block) ── */}
-      <div style={{ paddingTop: "1.25rem" }}>
-        <WhatMattersNow />
-      </div>
-
-      {/* ── MY MATCH PLAN ── */}
-      <div style={{ paddingTop: "1.5rem" }}>
-        <MyTournament />
-      </div>
-
-      {/* ── MATCH SCHEDULE ── */}
-      <section className="px-4 pt-6 pb-7 max-w-2xl mx-auto">
+      {/* ── MATCH SCHEDULE (primary content, immediately after hero) ── */}
+      <section className="px-4 pt-5 pb-6 max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-5">
           <h2 className="display" style={{ fontSize: "1.9rem", color: "var(--navy)", lineHeight: 1 }}>
             Match Schedule
@@ -45,17 +57,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── QUICK LINKS ── */}
-      <section className="px-4 pt-6 pb-7 max-w-2xl mx-auto">
+      {/* ── MY MATCH PLAN (compact unless team followed) ── */}
+      <div>
+        <MyTournament />
+      </div>
+
+      {/* ── QUICK LINKS (reordered: transit/closures/bars/guide) ── */}
+      <section className="px-4 pt-5 pb-7 max-w-2xl mx-auto">
         <h2 className="display mb-4" style={{ fontSize: "1.9rem", color: "var(--navy)", lineHeight: 1 }}>
-          More Info
+          Explore the Guide
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.625rem" }}>
           {[
-            { href: "/match-day",    icon: <MapPin size={18} />,     label: "Match Day",        sub: "Closures, transit & routes", bg: "#fff1f1", ic: "var(--red)" },
-            { href: "/matches",      icon: <Calendar size={18} />,   label: "Matches",          sub: "All 6 Toronto matches",  bg: "#f0f4ff", ic: "var(--navy)" },
-            { href: "/fan-festival", icon: <Music size={18} />,      label: "Fan Festival",    sub: "June 11 – July 19",       bg: "#f0fdf4", ic: "#166534" },
-            { href: "/guide",        icon: <BookOpen size={18} />,   label: "Visitor Guide",   sub: "Transit, tips & more",    bg: "#faf5ff", ic: "#7e22ce" },
+            { href: "/match-day",    icon: <MapPin size={18} />,        label: "Match Day Transit", sub: "Routes, shuttles & closures", bg: "#fff1f1", ic: "var(--red)" },
+            { href: "/closures",     icon: <Construction size={18} />,  label: "Road Closures",     sub: "What's closed & when",       bg: "#fef3c7", ic: "#92400e" },
+            { href: "/eat-watch",    icon: <Utensils size={18} />,      label: "Bars & Restaurants", sub: "Watch parties & team eats",  bg: "#f0fdf4", ic: "#166534" },
+            { href: "/guide",        icon: <BookOpen size={18} />,      label: "Visitor Essentials", sub: "Transit, tips & more",       bg: "#faf5ff", ic: "#7e22ce" },
           ].map(({ href, icon, label, sub, bg, ic }) => (
             <Link
               key={href}

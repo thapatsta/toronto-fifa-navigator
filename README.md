@@ -29,7 +29,7 @@ npm start
 
 Push to GitHub, connect to Vercel. No extra configuration needed.
 
-For a custom domain like `torontofifa.guide`, add it in the Vercel dashboard under Project → Settings → Domains.
+For a custom domain like `torontofootball.guide`, add it in the Vercel dashboard under Project → Settings → Domains.
 
 ## Data Updates
 

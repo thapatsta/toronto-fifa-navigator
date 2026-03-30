@@ -29,80 +29,79 @@ export default function MyTournament() {
         />
       )}
 
-      <section className="px-4 pb-7 max-w-2xl mx-auto">
-        {/* Section header */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.75rem" }}>
-          <h2 className="display" style={{ fontSize: "1.9rem", color: "var(--navy)", lineHeight: 1 }}>
-            My Match Plan
-          </h2>
+      {!hasContent ? (
+        /* ── COMPACT MODE: small inline prompt when no team followed ── */
+        <section className="px-4 pb-5 max-w-2xl mx-auto">
           <button
             onClick={() => setShowSelector(true)}
             style={{
-              display: "flex", alignItems: "center", gap: "0.3rem",
-              padding: "4px 12px", borderRadius: "99px",
-              border: "1.5px solid var(--border)",
-              background: prefs.followedTeam ? "var(--navy)" : "transparent",
-              color: prefs.followedTeam ? "white" : "var(--muted)",
-              cursor: "pointer", fontSize: "0.72rem",
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 700, letterSpacing: "0.05em",
-              transition: "all 0.15s",
-              maxWidth: "160px", overflow: "hidden",
-              whiteSpace: "nowrap", textOverflow: "ellipsis",
-              flexShrink: 0,
+              width: "100%",
+              borderRadius: "14px",
+              border: "1.5px dashed var(--border)",
+              background: "var(--card)",
+              padding: "0.75rem 1rem",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              cursor: "pointer",
+              transition: "border-color 0.15s, box-shadow 0.15s",
             }}
           >
-            {prefs.followedTeam
-              ? <>{prefs.followedFlag} {prefs.followedTeam}</>
-              : <><Star size={12} /> Follow a team</>
-            }
-          </button>
-        </div>
-
-        {!hasContent ? (
-          // Empty state
-          <div
-            style={{
-              borderRadius: "16px", border: "1.5px dashed var(--border)",
-              padding: "1.5rem 1rem", textAlign: "center",
-            }}
-          >
-            <p style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>⚽</p>
-            <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1.05rem", color: "var(--navy)", marginBottom: "0.25rem" }}>
-              Build your Toronto World Cup plan.
-            </p>
-            <p style={{ fontSize: "0.75rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", maxWidth: "260px", margin: "0 auto 1rem", lineHeight: 1.5 }}>
-              Save matches, bars, and routes so you can get back to what matters on match day.
-            </p>
-            <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", flexWrap: "wrap" }}>
-              <button
-                onClick={() => setShowSelector(true)}
-                style={{
-                  padding: "0.5rem 1.1rem", borderRadius: "99px",
-                  background: "var(--navy)", color: "white",
+            <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+              <div style={{
+                width: "32px", height: "32px", borderRadius: "10px",
+                background: "rgba(13,27,42,0.06)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <Star size={14} style={{ color: "var(--navy)" }} />
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <p style={{
                   fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
-                  fontSize: "0.8rem", letterSpacing: "0.06em",
-                  border: "none", cursor: "pointer",
-                }}
-              >
-                Follow a Team
-              </button>
-              <Link
-                href="/matches"
-                style={{
-                  display: "inline-flex", alignItems: "center",
-                  padding: "0.5rem 1.1rem", borderRadius: "99px",
-                  border: "1.5px solid var(--border)", color: "var(--navy)",
-                  fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
-                  fontSize: "0.8rem", letterSpacing: "0.06em",
-                  textDecoration: "none",
-                }}
-              >
-                View Matches
-              </Link>
+                  fontSize: "0.9rem", color: "var(--navy)", lineHeight: 1.2,
+                }}>
+                  Follow a team
+                </p>
+                <p style={{ fontSize: "0.7rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif" }}>
+                  Get a personalized match plan
+                </p>
+              </div>
             </div>
+            <ChevronRight size={16} style={{ color: "var(--muted)" }} />
+          </button>
+        </section>
+      ) : (
+        /* ── FULL MODE: section with followed team + saved matches ── */
+        <section className="px-4 pb-7 max-w-2xl mx-auto">
+          {/* Section header */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.75rem" }}>
+            <h2 className="display" style={{ fontSize: "1.9rem", color: "var(--navy)", lineHeight: 1 }}>
+              My Match Plan
+            </h2>
+            <button
+              onClick={() => setShowSelector(true)}
+              style={{
+                display: "flex", alignItems: "center", gap: "0.3rem",
+                padding: "4px 12px", borderRadius: "99px",
+                border: "1.5px solid var(--border)",
+                background: prefs.followedTeam ? "var(--navy)" : "transparent",
+                color: prefs.followedTeam ? "white" : "var(--muted)",
+                cursor: "pointer", fontSize: "0.72rem",
+                fontFamily: "'Barlow Condensed', sans-serif",
+                fontWeight: 700, letterSpacing: "0.05em",
+                transition: "all 0.15s",
+                maxWidth: "160px", overflow: "hidden",
+                whiteSpace: "nowrap", textOverflow: "ellipsis",
+                flexShrink: 0,
+              }}
+            >
+              {prefs.followedTeam
+                ? <>{prefs.followedFlag} {prefs.followedTeam}</>
+                : <><Star size={12} /> Follow a team</>
+              }
+            </button>
           </div>
-        ) : (
+
           <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
             {/* Followed team matches */}
             {prefs.followedTeam && teamMatches.map((match) => {
@@ -134,8 +133,8 @@ export default function MyTournament() {
               ))
             }
           </div>
-        )}
-      </section>
+        </section>
+      )}
     </>
   );
 }
@@ -212,7 +211,7 @@ function MatchRow({
           >
             <Bookmark size={13} fill={isSaved ? "currentColor" : "none"} />
           </button>
-          <Link href="/matches" style={{ color: "var(--muted)", display: "flex" }}>
+          <Link href={`/matches/${match.id}`} style={{ color: "var(--muted)", display: "flex" }}>
             <ChevronRight size={16} />
           </Link>
         </div>

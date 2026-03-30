@@ -203,7 +203,7 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                 <span style={{ color: "var(--border)", fontSize: "0.7rem" }}>·</span>
                 {/* Match Day Info */}
                 <Link
-                  href="/match-day"
+                  href={`/matches/${match.id}`}
                   style={{
                     display: "flex", alignItems: "center", gap: "3px",
                     fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "0.7rem",

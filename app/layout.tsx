@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StatusBanner from "@/components/StatusBanner";
+
+// ── Replace with your actual GA4 Measurement ID ──
+const GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
 
 export const metadata: Metadata = {
   title: {
@@ -19,6 +23,14 @@ export const metadata: Metadata = {
     siteName: "Toronto Football Guide",
     locale: "en_CA",
     type: "website",
+    images: [
+      {
+        url: "https://torontofootball.guide/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Toronto Football Guide — FIFA World Cup 2026",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -34,6 +46,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* ── Google Analytics 4 ── */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col">
         <StatusBanner />
         <Navbar />

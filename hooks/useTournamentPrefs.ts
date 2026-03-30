@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const STORAGE_KEY = "fifa-toronto-prefs";
 
@@ -44,6 +45,9 @@ export function useTournamentPrefs() {
   const setFollowedTeam = useCallback(
     (team: string | null, flag: string | null) => {
       save({ ...prefs, followedTeam: team, followedFlag: flag });
+      if (team) {
+        trackEvent("team_follow", { team });
+      }
     },
     [prefs, save]
   );
@@ -57,6 +61,7 @@ export function useTournamentPrefs() {
           ? prefs.savedMatchIds.filter((id) => id !== matchId)
           : [...prefs.savedMatchIds, matchId],
       });
+      trackEvent(already ? "match_unsave" : "match_save", { match_id: matchId });
     },
     [prefs, save]
   );

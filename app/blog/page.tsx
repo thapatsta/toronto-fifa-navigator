@@ -19,6 +19,39 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "canada-first-match-toronto-fifa-world-cup-2026",
+    title: "Canada's First Home World Cup Match: Everything You Need to Know for June 12",
+    description:
+      "Canada's first-ever home FIFA World Cup match is June 12 at Toronto Stadium. Transit, closures, atmosphere — here's how to be ready.",
+    date: "March 30, 2026",
+    readTime: "5 min read",
+    tag: "Canada Match Day",
+    tagColor: "var(--red)",
+    emoji: "🇨🇦",
+  },
+  {
+    slug: "best-bars-watch-fifa-world-cup-2026-toronto",
+    title: "Best Bars to Watch the FIFA World Cup 2026 in Toronto",
+    description:
+      "9 bars ranked by proximity to Exhibition Place, atmosphere, patios, and screen count — plus pro tips for match day.",
+    date: "March 30, 2026",
+    readTime: "5 min read",
+    tag: "Watch Parties",
+    tagColor: "#166534",
+    emoji: "🍺",
+  },
+  {
+    slug: "toronto-fifa-fan-festival-2026-what-to-expect",
+    title: "Toronto FIFA Fan Festival 2026: What to Expect at Fort York & The Bentway",
+    description:
+      "Free entry, big screens, live music, and food from June 11 to July 19. Everything you need to know about the Fan Festival.",
+    date: "March 30, 2026",
+    readTime: "4 min read",
+    tag: "Fan Festival",
+    tagColor: "#7e22ce",
+    emoji: "🎪",
+  },
+  {
     slug: "toronto-fifa-world-cup-road-closures-2026",
     title: "Toronto FIFA World Cup 2026: Complete Road Closure Guide by Date",
     description:
