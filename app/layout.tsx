@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StatusBanner from "@/components/StatusBanner";
+import AnalyticsPageView from "@/components/AnalyticsPageView";
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
@@ -73,6 +75,9 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <StatusBanner />
         <Navbar />
+        <Suspense fallback={null}>
+          <AnalyticsPageView />
+        </Suspense>
         <main className="flex-1 pb-20 md:pb-0">{children}</main>
         <Footer />
       </body>
