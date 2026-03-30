@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://torontofootball.guide/og-image.svg",
+        url: "https://torontofootball.guide/main-image.svg",
         width: 1200,
         height: 630,
         alt: "Toronto Football Guide — FIFA World Cup 2026",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Toronto Football Guide",
     description: "FIFA World Cup 2026 in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.",
-    images: ["https://torontofootball.guide/twitter-image.svg"],
+    images: ["https://torontofootball.guide/main-image.svg"],
   },
 };
 
