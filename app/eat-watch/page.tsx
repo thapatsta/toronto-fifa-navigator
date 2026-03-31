@@ -80,80 +80,37 @@ export default function EatWatchPage() {
       {/* ── GET FEATURED CTA ── */}
       <div
         style={{
-          background: "var(--navy)",
-          borderRadius: "18px",
-          border: "1.5px solid rgba(255,255,255,0.08)",
-          padding: "1.25rem",
-          position: "relative",
-          overflow: "hidden",
+          background: "var(--card)",
+          border: "1.5px solid var(--border)",
+          borderRadius: "14px",
+          padding: "1rem 1.1rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "1rem",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: 0, left: 0, right: 0,
-            height: "3px",
-            background: "var(--gold)",
-          }}
-        />
-        <p className="label" style={{ color: "var(--gold)", fontSize: "0.6rem", marginBottom: "0.4rem" }}>
-          For Bars & Restaurants
+        <p style={{ fontSize: "0.82rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4 }}>
+          Own a bar or restaurant near the action? Get your venue listed.
         </p>
-        <h3
+        <a
+          href="mailto:hello@torontofootball.guide?subject=Featured%20Listing%20Inquiry"
           style={{
+            flexShrink: 0,
+            padding: "0.5rem 0.9rem",
+            background: "var(--navy)",
+            color: "white",
+            borderRadius: "10px",
+            fontSize: "0.75rem",
             fontFamily: "'Barlow Condensed', sans-serif",
             fontWeight: 700,
-            fontSize: "1.15rem",
-            color: "white",
-            lineHeight: 1.2,
-            marginBottom: "0.5rem",
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
+            textDecoration: "none",
           }}
         >
-          300,000+ fans are coming to Toronto this June
-        </h3>
-        <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.55)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5, marginBottom: "0.85rem" }}>
-          Get your venue featured at the top of this guide — top placement, Featured badge, photo, and social links. Full tournament: June 11–July 19.
-        </p>
-        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", flexWrap: "wrap" }}>
-          {["✓ Top placement", "✓ Featured badge", "✓ Full tournament"].map((item) => (
-            <span
-              key={item}
-              style={{
-                fontSize: "0.68rem",
-                color: "rgba(255,255,255,0.45)",
-                fontFamily: "'DM Sans', sans-serif",
-              }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-        <div style={{ marginTop: "0.85rem", display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
-          <a
-            href="mailto:hello@torontofootball.guide?subject=Featured%20Listing%20Inquiry"
-            style={{
-              display: "inline-block",
-              padding: "0.6rem 1.25rem",
-              background: "var(--red)",
-              color: "white",
-              borderRadius: "10px",
-              fontSize: "0.8rem",
-              fontFamily: "'Barlow Condensed', sans-serif",
-              fontWeight: 700,
-              letterSpacing: "0.05em",
-              textTransform: "uppercase",
-              textDecoration: "none",
-            }}
-          >
-            Get Featured — $149 {/* NEEDS STRIPE LINK — replace href with Stripe Payment Link when ready */}
-          </a>
-          <span style={{ fontSize: "0.7rem", color: "rgba(255,255,255,0.3)", fontFamily: "'DM Sans', sans-serif" }}>
-            Questions?{" "}
-            <a href="mailto:hello@torontofootball.guide" style={{ color: "rgba(255,255,255,0.45)", textDecoration: "underline" }}>
-              hello@torontofootball.guide
-            </a>
-          </span>
-        </div>
+          Get in touch
+        </a>
       </div>
 
       {/* ── TAB TOGGLE ── */}

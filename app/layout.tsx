@@ -13,6 +13,14 @@ export const metadata: Metadata = {
     default: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
     template: "%s | Toronto Football Guide",
   },
+  // ── Google Search Console verification ──
+  // 1. Go to https://search.google.com/search-console
+  // 2. Add property → URL prefix → https://torontofootball.guide
+  // 3. Choose "HTML tag" verification → copy the content="XXXX" value
+  // 4. Replace the empty string below with that value, then git push
+  verification: {
+    google: "",
+  },
   description:
     "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto. Interactive map and match day guides.",
   metadataBase: new URL("https://torontofootball.guide"),

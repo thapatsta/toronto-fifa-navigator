@@ -5,7 +5,6 @@ import { MapPin, Utensils, Construction, BookOpen } from "lucide-react";
 import TodayHero from "@/components/TodayHero";
 import MyTournament from "@/components/MyTournament";
 import MatchCardWithPrefs from "@/components/MatchCardWithPrefs";
-import EmailSignup from "@/components/EmailSignup";
 
 export const metadata: Metadata = {
   title: "Toronto Football Guide — FIFA World Cup 2026 in Toronto",
@@ -82,9 +81,42 @@ export default function HomePage() {
         <MyTournament />
       </div>
 
-      {/* ── EMAIL SIGNUP ── */}
-      <div className="px-4 max-w-2xl mx-auto">
-        <EmailSignup />
+      {/* ── CONTACT ── */}
+      <div className="px-4 max-w-2xl mx-auto" style={{ marginBottom: "0.5rem" }}>
+        <div
+          style={{
+            background: "var(--card)",
+            border: "1.5px solid var(--border)",
+            borderRadius: "14px",
+            padding: "1rem 1.1rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1rem",
+          }}
+        >
+          <p style={{ fontSize: "0.82rem", color: "var(--muted)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.4 }}>
+            Questions, corrections, or want to get your venue listed?
+          </p>
+          <a
+            href="mailto:hello@torontofootball.guide"
+            style={{
+              flexShrink: 0,
+              padding: "0.5rem 0.9rem",
+              background: "var(--navy)",
+              color: "white",
+              borderRadius: "10px",
+              fontSize: "0.75rem",
+              fontFamily: "'Barlow Condensed', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
+            Drop us an email
+          </a>
+        </div>
       </div>
 
       {/* ── QUICK LINKS (reordered: transit/closures/bars/guide) ── */}
