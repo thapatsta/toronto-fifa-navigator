@@ -31,6 +31,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Toronto FIFA World Cup 2026: Complete Road Closure Guide by Date",
+  image: "https://torontofootball.guide/og-image.png",
   description:
     "The City of Toronto's full road closure plan for FIFA World Cup 2026 — which streets close, when, and what to do instead.",
   datePublished: "2026-03-27T12:00:00Z",

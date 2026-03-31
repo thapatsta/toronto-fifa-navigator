@@ -31,6 +31,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Getting to Toronto Stadium for the FIFA World Cup: Every Transit Option Explained",
+  image: "https://torontofootball.guide/og-image.png",
   description:
     "No parking, restricted streets, 45,000 fans. Here's every way to get to Toronto Stadium for FIFA 2026 — ranked by ease.",
   datePublished: "2026-03-27T12:00:00Z",

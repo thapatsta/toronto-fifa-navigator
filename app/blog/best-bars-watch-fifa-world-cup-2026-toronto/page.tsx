@@ -31,6 +31,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Best Bars to Watch the FIFA World Cup 2026 in Toronto",
+  image: "https://torontofootball.guide/og-image.png",
   description:
     "From Real Sports' 199 screens to intimate craft beer spots — the complete guide to Toronto's best watch party venues for FIFA World Cup 2026.",
   datePublished: "2026-03-30T12:00:00Z",

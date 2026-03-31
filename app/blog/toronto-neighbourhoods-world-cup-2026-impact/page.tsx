@@ -31,6 +31,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Toronto Neighbourhoods Affected by the World Cup 2026: What You Need to Know",
+  image: "https://torontofootball.guide/og-image.png",
   description:
     "Liberty Village, Parkdale, Fort York, CityPlace — here's how each Toronto neighbourhood is affected by the FIFA World Cup 2026.",
   datePublished: "2026-03-27T12:00:00Z",

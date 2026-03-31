@@ -31,6 +31,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Toronto FIFA Fan Festival 2026: What to Expect at Fort York & The Bentway",
+  image: "https://torontofootball.guide/og-image.png",
   description:
     "Your guide to the Toronto FIFA Fan Festival (June 11–July 19, 2026) at Fort York National Historic Site and The Bentway. Free entry, world-class performances, food vendors, and live World Cup coverage.",
   datePublished: "2026-03-30T12:00:00Z",

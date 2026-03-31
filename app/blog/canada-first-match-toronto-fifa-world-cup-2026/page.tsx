@@ -31,6 +31,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "Canada's First Home World Cup Match: Everything You Need to Know for June 12",
+  image: "https://torontofootball.guide/og-image.png",
   description:
     "Canada's first-ever FIFA World Cup match on home soil is June 12 at Toronto Stadium. Here's what to expect, how to get there, and why this moment matters.",
   datePublished: "2026-03-30T12:00:00Z",
