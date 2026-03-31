@@ -53,6 +53,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* ── Google AdSense ── */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5385617539737043"
+          crossOrigin="anonymous"
+        />
+
         {/* ── Google Analytics 4 — dangerouslySetInnerHTML for Cloudflare Pages compatibility ── */}
         <script
           async
