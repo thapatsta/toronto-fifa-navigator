@@ -18,78 +18,136 @@ export const metadata: Metadata = {
   },
 };
 
+const VENUE = {
+  "@type": "Place",
+  name: "Toronto Stadium at Exhibition Place",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "170 Princes' Blvd",
+    addressLocality: "Toronto",
+    addressRegion: "ON",
+    postalCode: "M6K 3C3",
+    addressCountry: { "@type": "Country", name: "CA" },
+  },
+};
+
+const ORGANIZER = {
+  "@type": "Organization",
+  name: "FIFA",
+  url: "https://www.fifa.com",
+};
+
+const OFFERS = {
+  "@type": "Offer",
+  url: "https://www.fifa.com/tickets",
+  availability: "https://schema.org/InStock",
+  priceCurrency: "CAD",
+};
+
+const IMAGE = "https://torontofootball.guide/og-image.png";
+
 const sportsEventsJsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     name: "FIFA World Cup 2026 — Canada vs European Playoff A Winner",
+    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Canada faces the European Playoff A Winner on June 12, 2026.",
     startDate: "2026-06-12T15:00:00-04:00",
-    location: {
-      "@type": "Place",
-      name: "Toronto Stadium at Exhibition Place",
-      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
-    },
-    organizer: { "@type": "Organization", name: "FIFA" },
+    endDate: "2026-06-12T17:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: IMAGE,
+    location: VENUE,
+    organizer: ORGANIZER,
+    offers: OFFERS,
+    performer: [
+      { "@type": "SportsTeam", name: "Canada" },
+      { "@type": "SportsTeam", name: "European Playoff A Winner" },
+    ],
   },
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     name: "FIFA World Cup 2026 — Ghana vs Panama",
+    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Ghana faces Panama on June 17, 2026.",
     startDate: "2026-06-17T19:00:00-04:00",
-    location: {
-      "@type": "Place",
-      name: "Toronto Stadium at Exhibition Place",
-      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
-    },
-    organizer: { "@type": "Organization", name: "FIFA" },
+    endDate: "2026-06-17T21:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: IMAGE,
+    location: VENUE,
+    organizer: ORGANIZER,
+    offers: OFFERS,
+    performer: [
+      { "@type": "SportsTeam", name: "Ghana" },
+      { "@type": "SportsTeam", name: "Panama" },
+    ],
   },
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     name: "FIFA World Cup 2026 — Germany vs Côte d'Ivoire",
+    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Germany faces Côte d'Ivoire on June 20, 2026.",
     startDate: "2026-06-20T16:00:00-04:00",
-    location: {
-      "@type": "Place",
-      name: "Toronto Stadium at Exhibition Place",
-      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
-    },
-    organizer: { "@type": "Organization", name: "FIFA" },
+    endDate: "2026-06-20T18:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: IMAGE,
+    location: VENUE,
+    organizer: ORGANIZER,
+    offers: OFFERS,
+    performer: [
+      { "@type": "SportsTeam", name: "Germany" },
+      { "@type": "SportsTeam", name: "Côte d'Ivoire" },
+    ],
   },
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     name: "FIFA World Cup 2026 — Croatia vs Panama",
+    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Croatia faces Panama on June 23, 2026.",
     startDate: "2026-06-23T19:00:00-04:00",
-    location: {
-      "@type": "Place",
-      name: "Toronto Stadium at Exhibition Place",
-      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
-    },
-    organizer: { "@type": "Organization", name: "FIFA" },
+    endDate: "2026-06-23T21:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: IMAGE,
+    location: VENUE,
+    organizer: ORGANIZER,
+    offers: OFFERS,
+    performer: [
+      { "@type": "SportsTeam", name: "Croatia" },
+      { "@type": "SportsTeam", name: "Panama" },
+    ],
   },
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     name: "FIFA World Cup 2026 — Senegal vs FIFA Playoff 2 Winner",
+    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Senegal faces the FIFA Playoff 2 Winner on June 26, 2026.",
     startDate: "2026-06-26T15:00:00-04:00",
-    location: {
-      "@type": "Place",
-      name: "Toronto Stadium at Exhibition Place",
-      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
-    },
-    organizer: { "@type": "Organization", name: "FIFA" },
+    endDate: "2026-06-26T17:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: IMAGE,
+    location: VENUE,
+    organizer: ORGANIZER,
+    offers: OFFERS,
+    performer: [
+      { "@type": "SportsTeam", name: "Senegal" },
+      { "@type": "SportsTeam", name: "FIFA Playoff 2 Winner" },
+    ],
   },
   {
     "@context": "https://schema.org",
     "@type": "SportsEvent",
     name: "FIFA World Cup 2026 — Round of 32: Group K vs Group L",
+    description: "FIFA World Cup 2026 Round of 32 match at Toronto Stadium on July 2, 2026.",
     startDate: "2026-07-02T19:00:00-04:00",
-    location: {
-      "@type": "Place",
-      name: "Toronto Stadium at Exhibition Place",
-      address: { "@type": "PostalAddress", streetAddress: "170 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", postalCode: "M6K 3C3", addressCountry: "CA" },
-    },
-    organizer: { "@type": "Organization", name: "FIFA" },
+    endDate: "2026-07-02T21:00:00-04:00",
+    eventStatus: "https://schema.org/EventScheduled",
+    image: IMAGE,
+    location: VENUE,
+    organizer: ORGANIZER,
+    offers: OFFERS,
+    performer: [
+      { "@type": "SportsTeam", name: "Group K Runner-Up" },
+      { "@type": "SportsTeam", name: "Group L Runner-Up" },
+    ],
   },
 ];
 
