@@ -246,10 +246,10 @@ function PreTournamentHero() {
         >
           Your guide to the FIFA World Cup in Toronto — match schedules, match-day transit, bars, closures, and visitor essentials.
         </p>
-        {/* Primary CTA */}
+        {/* Primary CTAs */}
         <div className="animate-fade-up stagger-2" style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap" }}>
           <Link
-            href="/guide"
+            href="/matches"
             style={{
               display: "inline-flex", alignItems: "center", gap: "0.4rem",
               padding: "0.65rem 1.2rem", borderRadius: "12px",
@@ -259,7 +259,21 @@ function PreTournamentHero() {
               textDecoration: "none",
             }}
           >
-            Explore the Guide <ArrowRight size={14} />
+            View Toronto Matches <ArrowRight size={14} />
+          </Link>
+          <Link
+            href="/guide"
+            style={{
+              display: "inline-flex", alignItems: "center", gap: "0.4rem",
+              padding: "0.65rem 1.2rem", borderRadius: "12px",
+              background: "rgba(255,255,255,0.1)", color: "white",
+              border: "1px solid rgba(255,255,255,0.2)",
+              fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+              fontSize: "0.9rem", letterSpacing: "0.06em", textTransform: "uppercase",
+              textDecoration: "none",
+            }}
+          >
+            Explore the Guide
           </Link>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { matches } from "@/data/matches";
 import { MapPin, Utensils, Construction, BookOpen } from "lucide-react";
 import TodayHero from "@/components/TodayHero";
+import WhatMattersNow from "@/components/WhatMattersNow";
 import MyTournament from "@/components/MyTournament";
 import MatchCardWithPrefs from "@/components/MatchCardWithPrefs";
 
@@ -59,6 +60,11 @@ export default function HomePage() {
 
       {/* ── SMART HERO (tournament-aware) ── */}
       <TodayHero />
+
+      {/* ── WHAT MATTERS NOW (dynamic context module) ── */}
+      <div style={{ marginTop: "1.25rem" }}>
+        <WhatMattersNow />
+      </div>
 
       {/* ── MATCH SCHEDULE (primary content, immediately after hero) ── */}
       <section className="px-4 pt-5 pb-6 max-w-2xl mx-auto">
@@ -126,10 +132,10 @@ export default function HomePage() {
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.625rem" }}>
           {[
-            { href: "/match-day",    icon: <MapPin size={18} />,        label: "Match Day Transit", sub: "Routes, shuttles & closures", bg: "#fff1f1", ic: "var(--red)" },
-            { href: "/closures",     icon: <Construction size={18} />,  label: "Road Closures",     sub: "What's closed & when",       bg: "#fef3c7", ic: "#92400e" },
-            { href: "/eat-watch",    icon: <Utensils size={18} />,      label: "Bars & Restaurants", sub: "Watch parties & team eats",  bg: "#f0fdf4", ic: "#166534" },
-            { href: "/guide",        icon: <BookOpen size={18} />,      label: "Visitor Essentials", sub: "Transit, tips & more",       bg: "#faf5ff", ic: "#7e22ce" },
+            { href: "/match-day",    icon: <MapPin size={18} />,     label: "Match Day",       sub: "Closures, transit & routes",  bg: "#fff1f1", ic: "var(--red)" },
+            { href: "/fan-festival", icon: <Construction size={18} />, label: "Fan Festival",  sub: "Fort York & The Bentway",      bg: "#fef3c7", ic: "#92400e" },
+            { href: "/eat-watch",    icon: <Utensils size={18} />,   label: "Bars & Restaurants", sub: "Watch parties & team eats", bg: "#f0fdf4", ic: "#166534" },
+            { href: "/guide",        icon: <BookOpen size={18} />,   label: "Visitor Guide",   sub: "Transit, tips & essentials",  bg: "#faf5ff", ic: "#7e22ce" },
           ].map(({ href, icon, label, sub, bg, ic }) => (
             <Link
               key={href}
