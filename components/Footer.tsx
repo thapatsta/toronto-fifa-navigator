@@ -57,7 +57,12 @@ export default function Footer() {
             Details may change — check{" "}
             <a href="https://toronto.ca/fifa" className="underline hover:text-gray-300">toronto.ca/fifa</a> for official updates.
           </p>
-          <p>© 2026 Toronto Football Guide. All rights reserved. Contact: hello@torontofootball.guide</p>
+          <p>
+            © 2026 Toronto Football Guide. All rights reserved.{" "}
+            <Link href="/privacy-policy" className="underline hover:text-gray-300">Privacy Policy</Link>
+            {" · "}
+            <Link href="/contact" className="underline hover:text-gray-300">Contact</Link>
+          </p>
         </div>
       </div>
     </footer>
