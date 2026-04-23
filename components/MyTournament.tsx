@@ -33,6 +33,7 @@ export default function MyTournament() {
         /* ── COMPACT MODE: small inline prompt when no team followed ── */
         <section className="px-4 pb-5 max-w-2xl mx-auto">
           <button
+            type="button"
             onClick={() => setShowSelector(true)}
             style={{
               width: "100%",
@@ -79,6 +80,7 @@ export default function MyTournament() {
               My Match Plan
             </h2>
             <button
+              type="button"
               onClick={() => setShowSelector(true)}
               style={{
                 display: "flex", alignItems: "center", gap: "0.3rem",
@@ -199,6 +201,7 @@ function MatchRow({
         {/* Actions */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", flexShrink: 0 }}>
           <button
+            type="button"
             onClick={onToggle}
             aria-label={isSaved ? "Unsave match" : "Save match"}
             style={{

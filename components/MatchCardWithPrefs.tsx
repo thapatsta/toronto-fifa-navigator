@@ -183,6 +183,7 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                 {/* Save */}
                 {loaded && (
                   <button
+                    type="button"
                     onClick={() => toggleSavedMatch(match.id)}
                     aria-label={isSaved ? "Unsave match" : "Save match"}
                     style={{

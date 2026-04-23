@@ -2,15 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, MapPin, Calendar, BookOpen, Utensils, Newspaper } from "lucide-react";
+import { Home, MapPin, Calendar, BookOpen, Utensils, Newspaper, Music } from "lucide-react";
 
 const navItems = [
-  { href: "/",           label: "Home",          mobileLabel: "Home",      icon: Home },
-  { href: "/match-day",  label: "Match Day",     mobileLabel: "Match Day", icon: MapPin },
-  { href: "/matches",    label: "Matches",       mobileLabel: "Matches",   icon: Calendar },
-  { href: "/guide",      label: "Visitor Guide", mobileLabel: "Guide",     icon: BookOpen },
-  { href: "/eat-watch",  label: "Eat & Watch",   mobileLabel: "Venues",    icon: Utensils },
-  { href: "/blog",       label: "Updates",       mobileLabel: "Updates",   icon: Newspaper },
+  { href: "/",             label: "Home",          mobileLabel: "Home",      icon: Home },
+  { href: "/match-day",    label: "Match Day",     mobileLabel: "Match Day", icon: MapPin },
+  { href: "/matches",      label: "Matches",       mobileLabel: "Matches",   icon: Calendar },
+  { href: "/fan-festival", label: "Festival",      mobileLabel: "Festival",  icon: Music },
+  { href: "/guide",        label: "Visitor Guide", mobileLabel: "Guide",     icon: BookOpen },
+  { href: "/eat-watch",    label: "Eat & Watch",   mobileLabel: "Eat+Watch", icon: Utensils },
+  { href: "/blog",         label: "Updates",       mobileLabel: "Updates",   icon: Newspaper },
 ];
 
 export default function Navbar() {

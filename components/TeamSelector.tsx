@@ -45,6 +45,7 @@ export default function TeamSelector({ currentTeam, onSelect, onDismiss }: TeamS
             </p>
           </div>
           <button
+            type="button"
             onClick={onDismiss}
             style={{
               padding: "6px", borderRadius: "10px", background: "var(--cream-2)",
@@ -62,6 +63,7 @@ export default function TeamSelector({ currentTeam, onSelect, onDismiss }: TeamS
             const isSelected = currentTeam === name;
             return (
               <button
+                type="button"
                 key={name}
                 onClick={() => {
                   onSelect(isSelected ? null : name, isSelected ? null : flag);
@@ -96,6 +98,7 @@ export default function TeamSelector({ currentTeam, onSelect, onDismiss }: TeamS
         {/* Clear selection */}
         {currentTeam && (
           <button
+            type="button"
             onClick={() => { onSelect(null, null); onDismiss(); }}
             style={{
               width: "100%", padding: "0.6rem",

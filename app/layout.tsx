@@ -14,7 +14,10 @@ export const metadata: Metadata = {
     template: "%s | Toronto Football Guide",
   },
   description:
-    "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto. Interactive map and match day guides.",
+    "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto.",
+  alternates: {
+    canonical: "https://torontofootball.guide",
+  },
   metadataBase: new URL("https://torontofootball.guide"),
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],

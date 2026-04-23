@@ -22,7 +22,7 @@ export default function HomePage() {
     location: {
       "@type": "Place",
       name: "Toronto Stadium",
-      address: { "@type": "PostalAddress", addressLocality: "Toronto", addressRegion: "ON", addressCountry: "CA" },
+      address: { "@type": "PostalAddress", streetAddress: "100 Princes' Blvd", addressLocality: "Toronto", addressRegion: "ON", addressCountry: "CA" },
     },
     competitor: [
       { "@type": "SportsTeam", name: m.homeTeam },
@@ -36,11 +36,6 @@ export default function HomePage() {
     "name": "Toronto Football Guide",
     "url": "https://torontofootball.guide",
     "description": "Road closures, transit changes, match schedule, and visitor guide for FIFA World Cup 2026 in Toronto.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://torontofootball.guide/?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
   };
 
   return (
