@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { matches } from "@/data/matches";
+import { matches, Match } from "@/data/matches";
 import { MapPin, Calendar } from "lucide-react";
 import MatchesWithPrefs from "@/components/MatchesWithPrefs";
 import MatchPageBar from "@/components/MatchPageBar";
@@ -46,110 +46,49 @@ const OFFERS = {
 
 const IMAGE = "https://torontofootball.guide/og-image.png";
 
-const sportsEventsJsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: "FIFA World Cup 2026 — Canada vs European Playoff A Winner",
-    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Canada faces the European Playoff A Winner on June 12, 2026.",
-    startDate: "2026-06-12T15:00:00-04:00",
-    endDate: "2026-06-12T17:00:00-04:00",
-    eventStatus: "https://schema.org/EventScheduled",
-    image: IMAGE,
-    location: VENUE,
-    organizer: ORGANIZER,
-    offers: OFFERS,
-    performer: [
-      { "@type": "SportsTeam", name: "Canada" },
-      { "@type": "SportsTeam", name: "European Playoff A Winner" },
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: "FIFA World Cup 2026 — Ghana vs Panama",
-    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Ghana faces Panama on June 17, 2026.",
-    startDate: "2026-06-17T19:00:00-04:00",
-    endDate: "2026-06-17T21:00:00-04:00",
-    eventStatus: "https://schema.org/EventScheduled",
-    image: IMAGE,
-    location: VENUE,
-    organizer: ORGANIZER,
-    offers: OFFERS,
-    performer: [
-      { "@type": "SportsTeam", name: "Ghana" },
-      { "@type": "SportsTeam", name: "Panama" },
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: "FIFA World Cup 2026 — Germany vs Côte d'Ivoire",
-    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Germany faces Côte d'Ivoire on June 20, 2026.",
-    startDate: "2026-06-20T16:00:00-04:00",
-    endDate: "2026-06-20T18:00:00-04:00",
-    eventStatus: "https://schema.org/EventScheduled",
-    image: IMAGE,
-    location: VENUE,
-    organizer: ORGANIZER,
-    offers: OFFERS,
-    performer: [
-      { "@type": "SportsTeam", name: "Germany" },
-      { "@type": "SportsTeam", name: "Côte d'Ivoire" },
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: "FIFA World Cup 2026 — Croatia vs Panama",
-    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Croatia faces Panama on June 23, 2026.",
-    startDate: "2026-06-23T19:00:00-04:00",
-    endDate: "2026-06-23T21:00:00-04:00",
-    eventStatus: "https://schema.org/EventScheduled",
-    image: IMAGE,
-    location: VENUE,
-    organizer: ORGANIZER,
-    offers: OFFERS,
-    performer: [
-      { "@type": "SportsTeam", name: "Croatia" },
-      { "@type": "SportsTeam", name: "Panama" },
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: "FIFA World Cup 2026 — Senegal vs FIFA Playoff 2 Winner",
-    description: "FIFA World Cup 2026 Group Stage match at Toronto Stadium. Senegal faces the FIFA Playoff 2 Winner on June 26, 2026.",
-    startDate: "2026-06-26T15:00:00-04:00",
-    endDate: "2026-06-26T17:00:00-04:00",
-    eventStatus: "https://schema.org/EventScheduled",
-    image: IMAGE,
-    location: VENUE,
-    organizer: ORGANIZER,
-    offers: OFFERS,
-    performer: [
-      { "@type": "SportsTeam", name: "Senegal" },
-      { "@type": "SportsTeam", name: "FIFA Playoff 2 Winner" },
-    ],
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SportsEvent",
-    name: "FIFA World Cup 2026 — Round of 32: Group K vs Group L",
-    description: "FIFA World Cup 2026 Round of 32 match at Toronto Stadium on July 2, 2026.",
-    startDate: "2026-07-02T19:00:00-04:00",
-    endDate: "2026-07-02T21:00:00-04:00",
-    eventStatus: "https://schema.org/EventScheduled",
-    image: IMAGE,
-    location: VENUE,
-    organizer: ORGANIZER,
-    offers: OFFERS,
-    performer: [
-      { "@type": "SportsTeam", name: "Group K Runner-Up" },
-      { "@type": "SportsTeam", name: "Group L Runner-Up" },
-    ],
-  },
-];
+function convertTimeTo24h(time: string): string {
+  const parsed = time.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if (!parsed) return "19:00";
+  let hours = parseInt(parsed[1]);
+  const minutes = parsed[2];
+  const period = parsed[3].toUpperCase();
+  if (period === "PM" && hours !== 12) hours += 12;
+  if (period === "AM" && hours === 12) hours = 0;
+  return `${hours.toString().padStart(2, "0")}:${minutes}`;
+}
+
+// SportsEvent JSON-LD generated from data/matches.ts — single source of truth,
+// so it can't drift from the real matchups the way a hand-duplicated array did.
+function buildSportsEventsJsonLd(matchList: Match[]) {
+  return matchList.map((match) => {
+    const startTime = convertTimeTo24h(match.time);
+    const [h, m] = startTime.split(":").map(Number);
+    const endHours = ((h + 2) % 24).toString().padStart(2, "0");
+    const description = match.homeScore !== undefined && match.awayScore !== undefined
+      ? `FIFA World Cup 2026 ${match.stage} match at Toronto Stadium. Final score: ${match.homeTeam} ${match.homeScore}–${match.awayScore} ${match.awayTeam} on ${match.date}.`
+      : `FIFA World Cup 2026 ${match.stage} match at Toronto Stadium. ${match.homeTeam} faces ${match.awayTeam} on ${match.date}.`;
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      name: `FIFA World Cup 2026 — ${match.homeTeam} vs ${match.awayTeam}`,
+      description,
+      startDate: `${match.date}T${startTime}:00-04:00`,
+      endDate: `${match.date}T${endHours}:${m.toString().padStart(2, "0")}:00-04:00`,
+      eventStatus: "https://schema.org/EventScheduled",
+      image: IMAGE,
+      location: VENUE,
+      organizer: ORGANIZER,
+      offers: OFFERS,
+      performer: [
+        { "@type": "SportsTeam", name: match.homeTeam },
+        { "@type": "SportsTeam", name: match.awayTeam },
+      ],
+    };
+  });
+}
+
+const sportsEventsJsonLd = buildSportsEventsJsonLd(matches);
 
 export default function MatchesPage() {
   return (
@@ -234,7 +173,7 @@ export default function MatchesPage() {
           opacity: 0.7,
         }}
       >
-        Last updated March 2026 · Playoff team names confirmed after March 31
+        All 6 matches complete · Final scores updated July 2026
       </p>
 
       {/* After game tips */}

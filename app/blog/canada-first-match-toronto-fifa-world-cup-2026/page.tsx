@@ -4,13 +4,13 @@ import ArticleLayout, {
 } from "@/components/ArticleLayout";
 
 export const metadata: Metadata = {
-  title: "Canada's First Home World Cup Match: Everything You Need to Know for June 12",
+  title: "Canada's First Home World Cup Match: Recap of the June 12 Draw with Bosnia and Herzegovina",
   description:
-    "Canada's first-ever FIFA World Cup match on home soil is June 12 at Toronto Stadium. Here's what to expect, how to get there, and why this moment matters.",
+    "Canada's first-ever FIFA World Cup match on home soil ended 1-1 against Bosnia and Herzegovina on June 12 at Toronto Stadium. Here's the recap, how fans got there, and why the moment mattered.",
   openGraph: {
-    title: "Canada's First Home World Cup Match: Everything You Need to Know for June 12",
+    title: "Canada's First Home World Cup Match: Recap of the June 12 Draw with Bosnia and Herzegovina",
     description:
-      "Canada's historic first home World Cup match is June 12 in Toronto. Here's the match details, how to get there, and what to expect.",
+      "Canada's historic first home World Cup match ended 1-1 against Bosnia and Herzegovina on June 12 in Toronto. Here's the recap and match-day details.",
     url: "https://torontofootball.guide/blog/canada-first-match-toronto-fifa-world-cup-2026",
     type: "article",
     publishedTime: "2026-03-30T12:00:00Z",
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Canada's First Home World Cup Match — June 12",
-    description: "Everything you need to know for Canada's historic match at Toronto Stadium.",
+    title: "Canada's First Home World Cup Match — Recap",
+    description: "Canada 1-1 Bosnia and Herzegovina: the recap of Canada's historic match at Toronto Stadium.",
   },
   alternates: {
     canonical: "https://torontofootball.guide/blog/canada-first-match-toronto-fifa-world-cup-2026",
@@ -30,23 +30,23 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Canada's First Home World Cup Match: Everything You Need to Know for June 12",
+  headline: "Canada's First Home World Cup Match: Recap of the June 12 Draw with Bosnia and Herzegovina",
   image: "https://torontofootball.guide/og-image.png",
   description:
-    "Canada's first-ever FIFA World Cup match on home soil is June 12 at Toronto Stadium. Here's what to expect, how to get there, and why this moment matters.",
+    "Canada's first-ever FIFA World Cup match on home soil ended 1-1 against Bosnia and Herzegovina on June 12 at Toronto Stadium.",
   datePublished: "2026-03-30T12:00:00Z",
-  dateModified: "2026-03-30T12:00:00Z",
+  dateModified: "2026-06-13T12:00:00Z",
   author: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
   publisher: { "@type": "Organization", name: "Toronto Football Guide", url: "https://torontofootball.guide" },
   mainEntityOfPage: { "@type": "WebPage", "@id": "https://torontofootball.guide/blog/canada-first-match-toronto-fifa-world-cup-2026" },
-  keywords: "Canada FIFA World Cup 2026, June 12, Toronto Stadium, Exhibition Place, Group F, playoff winner",
+  keywords: "Canada FIFA World Cup 2026, June 12, Toronto Stadium, Exhibition Place, Group F, Bosnia and Herzegovina",
 };
 
 export default function CanadaFirstMatchPost() {
   return (
     <ArticleLayout
-      title="Canada's First Home World Cup Match: Everything You Need to Know for June 12"
-      description="June 12 is not just another match day — it's Canada's moment. For the first time ever, Canada is hosting a FIFA World Cup match on home soil. Here's what you need to know."
+      title="Canada's First Home World Cup Match: Recap of the June 12 Draw with Bosnia and Herzegovina"
+      description="June 12 was Canada's moment. For the first time ever, Canada hosted a FIFA World Cup match on home soil — and came away with a 1-1 draw against Bosnia and Herzegovina. Here's how it went."
       publishedDate="March 30, 2026"
       readTime="5 min read"
       tag="Canada Match Day"
@@ -55,44 +55,48 @@ export default function CanadaFirstMatchPost() {
     >
       <Prose>
         <P>
-          For generations, Canadian soccer fans have dreamed of this moment. On <strong>Friday, June 12 at 3:00 PM ET</strong>,
-          Canada plays its first-ever FIFA World Cup match on home soil. The opponent: a European Playoff A Winner
-          (either Italy or Bosnia & Herzegovina, to be determined March 31). The stage: Toronto Stadium at Exhibition Place,
-          with 45,000 Canadians ready to roar.
+          For generations, Canadian soccer fans dreamed of this moment. On <strong>Friday, June 12 at 3:00 PM ET</strong>,
+          Canada played its first-ever FIFA World Cup match on home soil. The opponent: Bosnia and Herzegovina, who won the
+          European Playoff A final on penalties against Italy on March 31. The stage: Toronto Stadium at Exhibition Place,
+          with 45,000 Canadians roaring — and the final score was <strong>Canada 1–1 Bosnia and Herzegovina</strong>,
+          with Cyle Larin equalizing in the 78th minute.
         </P>
         <P>
-          This isn&apos;t just a match. This is history. Here&apos;s exactly what you need to know.
+          It wasn&apos;t a win, but it was history. Here&apos;s how the day went.
         </P>
 
         <Hr />
 
-        <H2>Why This Match Matters</H2>
+        <H2>Why This Match Mattered</H2>
         <P>
-          Canada qualified for the World Cup in 2022 but hosted no matches that year. Now, four years later, they&apos;re finally
-          playing in front of a home crowd — in the biggest tournament on the planet. It&apos;s the moment the country has
+          Canada qualified for the World Cup in 2022 but hosted no matches that year. Four years later, they finally
+          played in front of a home crowd — in the biggest tournament on the planet. It was the moment the country had
           been waiting for.
         </P>
         <P>
-          The atmosphere will be electric. Expect maple leafs, faces painted red and white, and the loudest crowd of the
-          entire tournament. Arrival capacity is 45,000 fans, and every seat will matter.
+          The atmosphere was electric. Maple leafs, faces painted red and white, and the loudest crowd of the
+          entire tournament at Toronto Stadium. All 45,000 seats were filled, and Cyle Larin&apos;s late equalizer sent the
+          crowd into a roar few World Cup opening matches ever get.
         </P>
 
         <Hr />
 
-        <H2>Match Details: What You&apos;re Watching</H2>
+        <H2>Match Details: Final Result</H2>
         <Ul>
           <Li><strong>Date:</strong> Friday, June 12, 2026</Li>
           <Li><strong>Time:</strong> 3:00 PM ET</Li>
-          <Li><strong>Teams:</strong> Canada vs. European Playoff A Winner (Italy or Bosnia & Herzegovina)</Li>
+          <Li><strong>Teams:</strong> Canada vs. Bosnia and Herzegovina</Li>
+          <Li><strong>Final score:</strong> 1–1 (Cyle Larin, 78&apos;)</Li>
           <Li><strong>Group Stage:</strong> Group F</Li>
           <Li><strong>Venue:</strong> Toronto Stadium at Exhibition Place, downtown Toronto</Li>
-          <Li><strong>Capacity:</strong> 45,000</Li>
-          <Li><strong>Why this is Group F:</strong> Canada is seeded in Group F alongside Germany, Senegal, and Panama</Li>
+          <Li><strong>Attendance:</strong> 45,000 (capacity)</Li>
+          <Li><strong>Group F:</strong> Canada, Germany, Senegal, and Panama</Li>
         </Ul>
 
-        <AlertBox emoji="⚽" title="The Playoff TBD" color="blue">
-          The European Playoff A is decided March 31, 2026. The winner (Italy or Bosnia & Herzegovina) will be confirmed just
-          11 days before the match. We&apos;ll update this guide as soon as the playoff result is announced.
+        <AlertBox emoji="⚽" title="Final Score: Canada 1–1 Bosnia and Herzegovina" color="green">
+          Bosnia and Herzegovina qualified by beating Italy on penalties in the European Playoff A final on March 31.
+          In Toronto, they held Canada to a draw until substitute Cyle Larin equalized in the 78th minute in front of a
+          sold-out crowd — a fitting result for Canada&apos;s first-ever home World Cup match.
         </AlertBox>
 
         <Hr />
@@ -192,9 +196,9 @@ export default function CanadaFirstMatchPost() {
 
         <H3>The Crowd</H3>
         <P>
-          This won&apos;t be just Canadians. You&apos;ll see Italian or Bosnian supporters (whoever wins the playoff). You&apos;ll see
-          visiting fans from other countries already in town. The atmosphere will be a mix of national pride and global soccer.
-          Expect the loudest crowd of any Toronto match that summer.
+          It wasn&apos;t just Canadians. Bosnian and Herzegovinian supporters travelled in numbers, alongside visiting fans
+          from other countries already in town for the tournament. The atmosphere was a mix of national pride and global
+          soccer — and it turned out to be the loudest crowd of any Toronto match that summer.
         </P>
 
         <H3>After the Match</H3>
@@ -220,16 +224,16 @@ export default function CanadaFirstMatchPost() {
 
         <Hr />
 
-        <H2>Get Your Ticket</H2>
+        <H2>Relive the Rest of the Tournament</H2>
         <P>
-          Tickets for Canada vs. European Playoff A Winner are likely to sell out. If you&apos;re planning to go, register on the
-          official FIFA World Cup ticketing site as soon as sales open. Expect high demand and prices to climb as match day approaches.
+          Canada&apos;s opener was just the first of six Toronto matches. Ghana, Germany, Croatia, Senegal, and a
+          Round of 32 knockout all followed at Toronto Stadium through July 2 — see how they all finished.
         </P>
 
         <CtaBox
           href="/matches"
-          label="View All Match Details"
-          sub="See transit options, closures, and details for all 6 Toronto matches"
+          label="View All Match Results"
+          sub="Final scores, transit options, and details for all 6 Toronto matches"
         />
 
         <Hr />

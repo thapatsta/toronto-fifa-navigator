@@ -158,7 +158,13 @@ export default function MatchCardWithPrefs({ matches }: Props) {
                   </span>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2px", padding: "0 0.5rem" }}>
-                  <span className="display" style={{ fontSize: "1.4rem", color: "var(--border)", letterSpacing: "0.05em" }}>VS</span>
+                  {isPast && match.homeScore !== undefined && match.awayScore !== undefined ? (
+                    <span className="display" style={{ fontSize: "1.6rem", color: "var(--navy)", letterSpacing: "0.02em" }}>
+                      {match.homeScore}–{match.awayScore}
+                    </span>
+                  ) : (
+                    <span className="display" style={{ fontSize: "1.4rem", color: "var(--border)", letterSpacing: "0.05em" }}>VS</span>
+                  )}
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.3rem", textAlign: "center" }}>
                   <span style={{ fontSize: "2.4rem", lineHeight: 1 }}>{match.awayFlag}</span>

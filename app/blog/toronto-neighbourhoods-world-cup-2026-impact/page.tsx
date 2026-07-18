@@ -222,7 +222,7 @@ export default function NeighbourhoodImpactPost() {
         <H2>Key Dates to Remember</H2>
         <Ul>
           <Li><strong>June 11:</strong> Fan Festival opens at Fort York / The Bentway — crowds begin</Li>
-          <Li><strong>June 12:</strong> First match (Canada vs. TBD) at 3 PM — full match day closures active</Li>
+          <Li><strong>June 12:</strong> First match (Canada 1–1 Bosnia and Herzegovina) at 3 PM — full match day closures active</Li>
           <Li><strong>June 17, 20, 23, 26:</strong> Additional match days</Li>
           <Li><strong>July 2:</strong> Final Toronto match (Round of 32) at 7 PM</Li>
           <Li><strong>July 19:</strong> Fan Festival closes, all tournament closures lifted</Li>
