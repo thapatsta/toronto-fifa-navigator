@@ -22,6 +22,8 @@ export default function MatchCard({
   onToggleSave,
 }: MatchCardProps) {
   const [expanded, setExpanded] = useState(showDetails);
+  const isPast = new Date(match.date + "T23:59:00") < new Date();
+  const hasScore = match.homeScore !== undefined && match.awayScore !== undefined;
 
   return (
     <div className="card overflow-hidden">
@@ -47,11 +49,18 @@ export default function MatchCard({
               <span>{match.homeFlag}</span>
               <span className="text-base">{match.homeShort ?? match.homeTeam}</span>
             </span>
-            <span className="text-gray-400 text-sm font-normal">vs</span>
+            {isPast && hasScore ? (
+              <span className="text-sm font-bold text-gray-900">{match.homeScore}–{match.awayScore}</span>
+            ) : (
+              <span className="text-gray-400 text-sm font-normal">vs</span>
+            )}
             <span className="flex items-center gap-1.5 font-bold text-gray-900">
               <span>{match.awayFlag}</span>
               <span className="text-base leading-snug">{match.awayShort ?? match.awayTeam}</span>
             </span>
+            {isPast && (
+              <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Final</span>
+            )}
           </div>
         </div>
 

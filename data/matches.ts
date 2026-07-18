@@ -8,6 +8,8 @@ export interface Match {
   awayShort?: string;  // Short display name for cards (falls back to awayTeam)
   homeFlag: string;
   awayFlag: string;
+  homeScore?: number;
+  awayScore?: number;
   stage: string;
   group?: string;
   notes?: string;
@@ -25,6 +27,8 @@ export const matches: Match[] = [
     awayShort: "Bosnia & Herz.",
     homeFlag: "🇨🇦",
     awayFlag: "🇧🇦",
+    homeScore: 1,
+    awayScore: 1,
     stage: "Group Stage",
     group: "Group F",
     significance: "Canada opener",
@@ -38,6 +42,8 @@ export const matches: Match[] = [
     awayTeam: "Panama",
     homeFlag: "🇬🇭",
     awayFlag: "🇵🇦",
+    homeScore: 1,
+    awayScore: 0,
     stage: "Group Stage",
     group: "Group L",
     significance: "Evening kickoff",
@@ -51,6 +57,8 @@ export const matches: Match[] = [
     awayTeam: "Côte d'Ivoire",
     homeFlag: "🇩🇪",
     awayFlag: "🇨🇮",
+    homeScore: 2,
+    awayScore: 1,
     stage: "Group Stage",
     group: "Group C",
     significance: "Weekend match",
@@ -64,6 +72,8 @@ export const matches: Match[] = [
     awayTeam: "Panama",
     homeFlag: "🇭🇷",
     awayFlag: "🇵🇦",
+    homeScore: 1,
+    awayScore: 0,
     stage: "Group Stage",
     group: "Group L",
     significance: "Evening kickoff",
@@ -77,6 +87,8 @@ export const matches: Match[] = [
     awayTeam: "Iraq",
     homeFlag: "🇸🇳",
     awayFlag: "🇮🇶",
+    homeScore: 5,
+    awayScore: 0,
     stage: "Group Stage",
     group: "Group I",
     significance: "Afternoon kickoff",
@@ -86,16 +98,18 @@ export const matches: Match[] = [
     id: "match-6",
     date: "2026-07-02",
     time: "7:00 PM ET",
-    homeTeam: "Group K Runner-up",
-    awayTeam: "Group L Runner-up",
-    homeShort: "Grp K Runner-up",
-    awayShort: "Grp L Runner-up",
-    homeFlag: "⚽",
-    awayFlag: "⚽",
+    homeTeam: "Portugal",
+    awayTeam: "Croatia",
+    homeShort: "Portugal",
+    awayShort: "Croatia",
+    homeFlag: "🇵🇹",
+    awayFlag: "🇭🇷",
+    homeScore: 2,
+    awayScore: 1,
     stage: "Round of 32",
     significance: "Knockout match",
     utilityNote: "Knockout stage — one result ends a team's tournament. Expect elevated demand.",
-    notes: "Group K: Portugal, Uzbekistan, Colombia + playoff winner. Group L: England, Croatia, Ghana, Panama.",
+    notes: "Portugal (Group K runner-up) vs Croatia (Group L runner-up) — Croatia's third Toronto match of the tournament.",
   },
 ];
 

@@ -25,12 +25,12 @@ on a match day, during the tournament window (no match today), or post-tournamen
 ## Key dates
 
 - **June 11**: Fan Festival opens (Fort York & The Bentway)
-- **June 12**: First Toronto match — Canada vs. European Playoff A Winner, 3 PM ET
-- **June 17**: Ghana vs. Panama, 7 PM ET
-- **June 20**: Germany vs. Côte d'Ivoire, 4 PM ET
-- **June 23**: Croatia vs. Panama, 7 PM ET
-- **June 26**: Senegal vs. FIFA Playoff 2 Winner, 3 PM ET
-- **July 2**:  Round of 32 (Group K vs. Group L runners-up), 7 PM ET
+- **June 12**: First Toronto match — Canada 1–1 Bosnia and Herzegovina, 3 PM ET
+- **June 17**: Ghana 1–0 Panama, 7 PM ET
+- **June 20**: Germany 2–1 Côte d'Ivoire, 4 PM ET
+- **June 23**: Croatia 1–0 Panama, 7 PM ET
+- **June 26**: Senegal 5–0 Iraq, 3 PM ET
+- **July 2**:  Round of 32 — Portugal 2–1 Croatia, 7 PM ET
 - **July 19**: Fan Festival closes — all tournament closures lifted
 
 ---
@@ -56,7 +56,7 @@ on a match day, during the tournament window (no match today), or post-tournamen
 
 | File | Contents |
 |---|---|
-| `matches.ts` | All 6 Toronto matches with date, time, teams, flags, stage, notes |
+| `matches.ts` | All 6 Toronto matches with date, time, teams, flags, stage, final scores, notes |
 | `closures.ts` | Road closure data — tournament-long and match-day |
 | `restaurants.ts` | Restaurant picks grouped by country (Canada, Ghana, Panama, Germany, Côte d'Ivoire, Croatia, Senegal) |
 | `watchParties.ts` | Bars and watch party venues with neighbourhood and features |
@@ -136,7 +136,7 @@ Shape:
 
 ## Important constraints
 
-- **No live scores** — all data is static/curated. Update `data/matches.ts` when playoff teams are confirmed (March 31, 2026 and beyond).
+- **No live in-play score ticker** — all data is static/curated. All 6 matches are complete; `data/matches.ts` holds final `homeScore`/`awayScore` for each, which the match cards and match-detail pages render for past matches.
 - **Road closure details** are approximate until the city releases street-by-street data in May 2026. Update `data/closures.ts` at that time.
 - **Web-first** (not PWA). No service worker, no push notifications.
 - All client components that use localStorage must be `"use client"` and handle SSR hydration carefully (read from localStorage in `useEffect`, not during render).

@@ -98,16 +98,16 @@ export default function RoadClosuresPost() {
 
         <Hr />
 
-        <H2>Match Schedule: When Are the Game Days?</H2>
+        <H2>Match Schedule: Final Results</H2>
         <DataTable
-          headers={["Date", "Time", "Match"]}
+          headers={["Date", "Time", "Match", "Result"]}
           rows={[
-            ["Friday, June 12",    "3:00 PM",  "Canada vs. European Playoff A Winner"],
-            ["Wednesday, June 17", "7:00 PM",  "Ghana vs. Panama"],
-            ["Saturday, June 20",  "4:00 PM",  "Germany vs. Côte d'Ivoire"],
-            ["Tuesday, June 23",   "7:00 PM",  "Croatia vs. Panama"],
-            ["Friday, June 26",    "3:00 PM",  "Senegal vs. FIFA Playoff 2 Winner"],
-            ["Thursday, July 2",   "7:00 PM",  "Round of 32: Group K vs. Group L"],
+            ["Friday, June 12",    "3:00 PM",  "Canada vs. Bosnia and Herzegovina", "1–1"],
+            ["Wednesday, June 17", "7:00 PM",  "Ghana vs. Panama", "1–0 Ghana"],
+            ["Saturday, June 20",  "4:00 PM",  "Germany vs. Côte d'Ivoire", "2–1 Germany"],
+            ["Tuesday, June 23",   "7:00 PM",  "Croatia vs. Panama", "1–0 Croatia"],
+            ["Friday, June 26",    "3:00 PM",  "Senegal vs. Iraq", "5–0 Senegal"],
+            ["Thursday, July 2",   "7:00 PM",  "Round of 32: Portugal vs. Croatia", "2–1 Portugal"],
           ]}
         />
 

@@ -10,12 +10,13 @@ export function generateStaticParams() {
 }
 
 // ── Dynamic metadata per match ──
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { matchId: string };
-}): Metadata {
-  const match = matches.find((m) => m.id === params.matchId);
+  params: Promise<{ matchId: string }>;
+}): Promise<Metadata> {
+  const { matchId } = await params;
+  const match = matches.find((m) => m.id === matchId);
   if (!match) {
     return { title: "Match Not Found" };
   }
@@ -100,12 +101,13 @@ function convertTimeTo24h(time: string): string {
   return `${hours.toString().padStart(2, "0")}:${minutes}`;
 }
 
-export default function MatchPage({
+export default async function MatchPage({
   params,
 }: {
-  params: { matchId: string };
+  params: Promise<{ matchId: string }>;
 }) {
-  const match = matches.find((m) => m.id === params.matchId);
+  const { matchId } = await params;
+  const match = matches.find((m) => m.id === matchId);
 
   if (!match) {
     return (
@@ -191,9 +193,18 @@ export default function MatchPage({
                   {match.homeShort ?? match.homeTeam}
                 </p>
               </div>
-              <h1 className="display" style={{ fontSize: "clamp(2rem, 10vw, 3.5rem)", color: "rgba(255,255,255,0.2)", lineHeight: 0.9 }}>
-                VS
-              </h1>
+              {match.homeScore !== undefined && match.awayScore !== undefined ? (
+                <div style={{ textAlign: "center" }}>
+                  <h1 className="display" style={{ fontSize: "clamp(2rem, 10vw, 3.5rem)", color: "white", lineHeight: 0.9 }}>
+                    {match.homeScore}–{match.awayScore}
+                  </h1>
+                  <p className="label" style={{ color: "var(--gold)", fontSize: "0.65rem", marginTop: "0.2rem" }}>Final</p>
+                </div>
+              ) : (
+                <h1 className="display" style={{ fontSize: "clamp(2rem, 10vw, 3.5rem)", color: "rgba(255,255,255,0.2)", lineHeight: 0.9 }}>
+                  VS
+                </h1>
+              )}
               <div style={{ textAlign: "center", flex: 1 }}>
                 <div style={{ fontSize: "3.5rem", lineHeight: 1 }}>{match.awayFlag}</div>
                 <p style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700, fontSize: "1rem", color: "white", marginTop: "0.35rem", lineHeight: 1.2 }}>

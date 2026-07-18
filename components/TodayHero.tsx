@@ -307,6 +307,17 @@ function PostTournamentHero() {
         >
           6 matches. One city. Toronto showed up. Thanks for being part of it.
         </p>
+        <Link
+          href="/matches"
+          style={{
+            display: "inline-flex", alignItems: "center", gap: "0.4rem", marginTop: "0.9rem",
+            color: "var(--gold)", fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 700,
+            fontSize: "0.85rem", letterSpacing: "0.04em", textTransform: "uppercase",
+            textDecoration: "none",
+          }}
+        >
+          See All 6 Final Scores <ArrowRight size={14} />
+        </Link>
       </div>
     </section>
   );

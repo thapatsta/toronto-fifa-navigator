@@ -10,13 +10,15 @@ import { useTournamentPrefs } from "@/hooks/useTournamentPrefs";
 import { matches } from "@/data/matches";
 
 const countryGroups = [
-  { country: "Canada",        flag: "🇨🇦" },
-  { country: "Ghana",         flag: "🇬🇭" },
-  { country: "Panama",        flag: "🇵🇦" },
-  { country: "Germany",       flag: "🇩🇪" },
-  { country: "Côte d'Ivoire", flag: "🇨🇮" },
-  { country: "Croatia",       flag: "🇭🇷" },
-  { country: "Senegal",       flag: "🇸🇳" },
+  { country: "Canada",                 flag: "🇨🇦" },
+  { country: "Ghana",                  flag: "🇬🇭" },
+  { country: "Panama",                 flag: "🇵🇦" },
+  { country: "Germany",                flag: "🇩🇪" },
+  { country: "Côte d'Ivoire",          flag: "🇨🇮" },
+  { country: "Croatia",                flag: "🇭🇷" },
+  { country: "Senegal",                flag: "🇸🇳" },
+  { country: "Bosnia and Herzegovina", flag: "🇧🇦" },
+  { country: "Iraq",                   flag: "🇮🇶" },
 ];
 
 function getRelevantCountriesForToday(): string[] {
